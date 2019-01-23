@@ -1,21 +1,35 @@
-body 
+/*body 
 {
     background-color: lightblue;
-}
-  
-h1 
+}*/
+
+div
 {
-    color: navy;
-    margin-left: 20px;
+    height: 500px;
+    width: 300px;
+    background-color: lightblue;
+}
+
+h2
+{
+    padding:left: 10px;
 }
 
 p
 {
+    padding-left: 10px;
     padding-right: 20px;
+    line-height: 10px;
 }
 
-tab 
+span.tab 
 {
     position: absolute;
     left: 125px; 
+}
+
+span.short-tab
+{
+    position: absolute;
+    left: 75px;
 }
