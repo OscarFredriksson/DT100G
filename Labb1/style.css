@@ -1,0 +1,21 @@
+body 
+{
+    background-color: lightblue;
+}
+  
+h1 
+{
+    color: navy;
+    margin-left: 20px;
+}
+
+p
+{
+    padding-right: 20px;
+}
+
+tab 
+{
+    position: absolute;
+    left: 125px; 
+}
