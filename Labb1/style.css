@@ -1,35 +1,62 @@
-/*body 
+.inputField
 {
-    background-color: lightblue;
-}*/
-
-div
-{
-    height: 500px;
+    height: 400px;
     width: 300px;
     background-color: lightblue;
+    padding-top: 0px;
+}
+
+.card
+{
+    width: 300px;
+    height: 150px;
 }
 
 h2
 {
-    padding:left: 10px;
+    padding-left: 10px;
 }
 
 p
 {
     padding-left: 10px;
-    padding-right: 20px;
-    line-height: 10px;
 }
 
-span.tab 
+.buttons
 {
-    position: absolute;
-    left: 125px; 
+    padding-left: 75px;
 }
 
-span.short-tab
+.card-company
 {
-    position: absolute;
-    left: 75px;
+    padding-left: 10px;
+    margin: 0px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.card-name
+{
+    margin: 0px;
+    font-size: 20px;
+}
+
+.card-title
+{
+    margin: 0px;
+    font-size: 15px;
+}
+
+
+.card-phone
+{
+    padding-top: 20px;
+    margin: 0px;
+    font-size: 20px;
+}
+
+.card-email
+{
+    margin: 0px;
+    font-size: 15px;
 }

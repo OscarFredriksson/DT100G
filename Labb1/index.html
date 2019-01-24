@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="sv">
+<meta charset="utf-8">
+
 <head>
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Beställ visitkort</title>
@@ -7,45 +9,93 @@
 
 <body>
 
-<div id="page1">
+<div class ="inputField" id="order_page">
     <h2>Beställ ditt visitkort här:</h2>
+
+    <table>
+        <tr> 
+            <td> Företag... </td> 
+            <td> <input type="text" id="input-company" /></td> 
+        </tr>
+        
+        <tr> 
+            <td> Efternamn... </td> 
+            <td> <input type="text" id="input-lastname" /> </td> 
+        </tr>
+        
+        <tr> 
+            <td> Förnamn... </td> 
+            <td> <input type="text" id="input-firstname" /> </td> 
+        </tr>
+        
+        <tr> 
+            <td> Titel... </td> 
+            <td> <input type="text" id="input-title" /> </td> 
+        </tr>
+        
+        <tr> 
+            <td> Telefon... </td> 
+            <td> <input type="text" id="input-phone" /> </td> 
+        </tr>
+        
+        <tr> 
+            <td> E-post... </td> 
+            <td> <input type="text" id="input-email" /> </td> 
+        </tr>
     
-    <p> Företag...          <span class="tab"> <input type="text" id="company" /> </span> </p>
-    <p> Efternamn...        <span class="tab"> <input type="text" id="lastname" /> </span> </p>
-    <p> Förnamn...          <span class="tab"> <input type="text" id="firstname" /> </span> </p>
-    <p> Titel...            <span class="tab"> <input type="text" id="title" /> </span> </p>
-    <p> Telefon...          <span class="tab"> <input type="text" id="phone" /> </span> </p>
-    <p> E-post...           <span class="tab"> <input type="text" id="email" /> </span> </p>
-    <p> Bakgrundsfärg...    
-        <span class="tab"> <select>
-            <option value="lightblue">Ljusblå</option>
-            <option value="lightyellow">Ljusgul</option>
-            <option value="white">Vit</option>
-            <option value="turquise">Turkos</option>
-        </select> </span>
-    </p>
-    <p> Textfärg... 
-        <span class="tab"> <select>
-            <option value="black">Svart</option>
-            <option value="blue">Blå</option>
-            <option value="red">Röd</option>
-            <option value="darkgreen">Mörkgrön</option>
-        </select> </span>
-    </p>
-    <p> Typsnitt...
-        <span class="tab"> <select>
-            <option value="verdana"> Verdana </option>
-            <option value="ariel"> Ariel </option>
-            <option value="tahoma"> Tahoma </option>
-            <option value="impact"> Impact </option>
-        </select> </span>
-    </p>
+        <tr>  
+            <td> Bakgrundsfärg... </td>  
+            <td> 
+                <select id="input-backgroundcolor">
+                    <option value="lightblue">Ljusblå</option>
+                    <option value="lightyellow">Ljusgul</option>
+                    <option value="white">Vit</option>
+                    <option value="turquoise">Turkos</option>
+                </select> 
+            </td>
+        </tr>
+        
+        <tr> 
+            <td> Textfärg... </td> 
+            <td> 
+                <select id="input-textcolor">
+                    <option value="black">Svart</option>
+                    <option value="blue">Blå</option>
+                    <option value="red">Röd</option>
+                    <option value="darkgreen">Mörkgrön</option>
+                </select> 
+            </td>
+        </tr>
+        
+        <tr> 
+            <td> Typsnitt... </td>
+            <td> 
+                <select id="input-font">
+                    <option value="verdana"> Verdana </option>
+                    <option value="ariel"> Ariel </option>
+                    <option value="tahoma"> Tahoma </option>
+                    <option value="impact"> Impact </option>
+                </select> 
+            </td>
+        </tr>
+    </table>
     
-    <p> <span class="short-tab">
+    <p class="buttons">
         <input type="reset" id="reset" value="Nollställ" /> 
         <input type="submit" id="submit" value="Skriv ut" />
-    </span> </p>
+    </p>
 </div>
+
+<div class="card" id="result_page">
+        <p class="card-company" id="card-company">Företag</p>
+        <p class="card-name" id="card-name">Oscar Fredriksson</p>
+        <p class="card-title" id="card-title">titel</p>
+        <p class="card-phone" id="card-phone">123123123123123</p>
+        <p class="card-email" id="card-email">asdasdasd@test.com</p>
+</div>
+
+<script type="text/javascript" src="script.js"></script>
+
 
 </body>
 </html>
