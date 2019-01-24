@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="sv">
-<meta charset="utf-8">
 
 <head>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Beställ visitkort</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css"> <!--Importera stil-mallen-->
+    
+    <title> Beställ visitkort </title>
 </head>
 
 <body>
 
-<div class ="inputField" id="order_page">
-    <h2>Beställ ditt visitkort här:</h2>
+<!--Skapar en sektion för input-fälten-->
+<div class ="input-section" id="order_page">    
 
-    <table>
-        <tr> 
-            <td> Företag... </td> 
-            <td> <input type="text" id="input-company" /></td> 
+    <h2 class="input-title"> Beställ ditt visitkort här: </h2>
+
+    <!--Använder ett table för att hålla text + box för inputfälten-->
+    <table> 
+        <tr> <!--En rad i tabellen:-->
+            <td> Företag... </td> <!--Texten i den första kolumnen-->
+            <td> <input type="text" id="input-company" /></td> <!--Input-boxen i den andra kolumnen-->
         </tr>
         
         <tr> 
@@ -46,8 +50,10 @@
         <tr>  
             <td> Bakgrundsfärg... </td>  
             <td> 
-                <select id="input-backgroundcolor">
-                    <option value="lightblue">Ljusblå</option>
+                <!--Skapar en selection-box för färgen-->
+                <select id="input-backgroundcolor"> 
+                    <!--Fyller boxen med värden-->
+                    <option value="lightblue">Ljusblå</option> 
                     <option value="lightyellow">Ljusgul</option>
                     <option value="white">Vit</option>
                     <option value="turquoise">Turkos</option>
@@ -80,22 +86,23 @@
         </tr>
     </table>
     
+    <!--Sätter ut knapparna-->
     <p class="buttons">
-        <input type="reset" id="reset" value="Nollställ" /> 
+        <input type="reset" id="reset" value="Nollställ" />
         <input type="submit" id="submit" value="Skriv ut" />
     </p>
 </div>
 
-<div class="card" id="result_page">
-        <p class="card-company" id="card-company">Företag</p>
-        <p class="card-name" id="card-name">Oscar Fredriksson</p>
-        <p class="card-title" id="card-title">titel</p>
-        <p class="card-phone" id="card-phone">123123123123123</p>
-        <p class="card-email" id="card-email">asdasdasd@test.com</p>
+<!--Skapar en sektion för att skriva ut kortet (denna göms tills "skriv ut" knappen trycks)-->
+<div class="card-section" id="result_page">
+        <p class="card-company" id="card-company"></p>
+        <p class="card-name" id="card-name"></p>
+        <p class="card-title" id="card-title"></p>
+        <p class="card-phone" id="card-phone"></p>
+        <p class="card-email" id="card-email"></p>
 </div>
 
-<script type="text/javascript" src="script.js"></script>
-
+<script src="script.js"></script> <!--importera skriptet-->
 
 </body>
 </html>
