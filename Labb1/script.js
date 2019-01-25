@@ -1,5 +1,5 @@
 
-document.getElementById("result_page").style.display = 'none';
+document.getElementById("result_page").style.display = 'none';  //Göm resultatsidan
 
 //När "nollställ" knappen trycks
 document.getElementById("reset").addEventListener("click", function()
@@ -14,11 +14,13 @@ document.getElementById("reset").addEventListener("click", function()
                             document.getElementById("input-email")
                         ];
 
-    inputTextFields.forEach(function(obj)   //Loopa igenom alla text-objekt och rensa fältet
+    //Loopa igenom alla text-objekt och rensa fältet
+    inputTextFields.forEach(function(obj)   
     {
         obj.value = "";
     });
 
+    //Återställ alla listboxar (sätt deras valda objekt till det första i listan)
     document.getElementById("input-backgroundcolor").selectedIndex = 0;
     document.getElementById("input-textcolor").selectedIndex = 0;
     document.getElementById("input-font").selectedIndex = 0;
@@ -26,21 +28,21 @@ document.getElementById("reset").addEventListener("click", function()
 });
 
 //När "skriv ut" knappen trycks
-document.getElementById("submit").addEventListener("click", function(){
-
+document.getElementById("submit").addEventListener("click", function()
+{
     document.getElementById("order_page").style.display = 'none';
     document.getElementById("result_page").style.display = 'block';
 
     //Spara alla textobjekt för att kunna iterera igenom dessa senare
     var cardTextObjects = [
-                        document.getElementById("card-company"),
-                        document.getElementById("card-name"),
-                        document.getElementById("card-title"),
-                        document.getElementById("card-phone"),
-                        document.getElementById("card-email")
-                    ];
+                            document.getElementById("card-company"),
+                            document.getElementById("card-name"),
+                            document.getElementById("card-title"),
+                            document.getElementById("card-phone"),
+                            document.getElementById("card-email")
+                        ];
 
-    //Sätter text-fält:
+    //Sätter text-fält till inmatningen:
     cardTextObjects[0].innerHTML = document.getElementById("input-company").value;
     cardTextObjects[1].innerHTML = document.getElementById("input-firstname").value + " " + document.getElementById("input-lastname").value;
     cardTextObjects[2].innerHTML = document.getElementById("input-title").value;
@@ -52,17 +54,19 @@ document.getElementById("submit").addEventListener("click", function(){
     document.getElementById("result_page").style.backgroundColor = backgroundColor;
 
     
-    //Sätter textfärg:
-    var textColor = document.getElementById("input-textcolor").value;
+    //Sätter textfärg till den valda:
+
+    var textColor = document.getElementById("input-textcolor").value;   //Spara textfärgen
 
     cardTextObjects.forEach(function(obj)   //Loopar igenom alla text-objekt och sätt text-färg
     {
         obj.style.color = textColor;
     });
 
+    
+    //Sätter font till den valda:
 
-    //Sätter font:
-    var choosenFont = document.getElementById("input-font").value;
+    var choosenFont = document.getElementById("input-font").value;  //Spara fonten
 
     cardTextObjects.forEach(function(obj)   //Loopar igenom alla text-objekt och sätt font
     {
