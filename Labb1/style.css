@@ -1,3 +1,4 @@
+/*Inmatningsfältets stil: */
 .input-section
 {
     height: 400px;
@@ -13,7 +14,19 @@
 
 .buttons
 {
+    padding-top: 15px;
     padding-left: 75px;
+}
+
+.row 
+{
+    display: table-row;  
+    line-height: 1.5;
+}
+.row div 
+{
+    display: table-cell;
+    padding-left: 10px;
 }
 
 

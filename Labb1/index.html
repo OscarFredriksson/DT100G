@@ -15,82 +15,79 @@
 
     <h2 class="input-title"> Beställ ditt visitkort här: </h2>
 
-    <!--Använder ett table för att hålla text + box för inputfälten-->
-    <table> 
-        <tr> <!--En rad i tabellen:-->
-            <td> Företag... </td> <!--Texten i den första kolumnen-->
-            <td> <input type="text" id="input-company" /></td> <!--Input-boxen i den andra kolumnen-->
-        </tr>
-        
-        <tr> 
-            <td> Efternamn... </td> 
-            <td> <input type="text" id="input-lastname" /> </td> 
-        </tr>
-        
-        <tr> 
-            <td> Förnamn... </td> 
-            <td> <input type="text" id="input-firstname" /> </td> 
-        </tr>
-        
-        <tr> 
-            <td> Titel... </td> 
-            <td> <input type="text" id="input-title" /> </td> 
-        </tr>
-        
-        <tr> 
-            <td> Telefon... </td> 
-            <td> <input type="text" id="input-phone" /> </td> 
-        </tr>
-        
-        <tr> 
-            <td> E-post... </td> 
-            <td> <input type="text" id="input-email" /> </td> 
-        </tr>
+    <div class="row"> <!--En rad i  bestående av text + inputbox-->
+        <div> Företag... </div>
+        <div> <input type="text" id="input-company" /> </div>
+    </div>
+     
+    <div class="row"> 
+        <div> Efternamn... </div> 
+        <div> <input type="text" id="input-lastname" /> </div> 
+    </div>
     
-        <tr>  
-            <td> Bakgrundsfärg... </td>  
-            <td> 
-                <!--Skapar en selection-box för färgen-->
-                <select id="input-backgroundcolor"> 
-                    <!--Fyller boxen med värden-->
-                    <option value="lightblue">Ljusblå</option> 
-                    <option value="lightyellow">Ljusgul</option>
-                    <option value="white">Vit</option>
-                    <option value="turquoise">Turkos</option>
-                </select> 
-            </td>
-        </tr>
+    <div class="row">
+        <div> Förnamn... </div> 
+        <div> <input type="text" id="input-firstname" /> </div> 
+    </div>
+            
+    <div class="row"> 
+        <div> Titel... </div> 
+        <div> <input type="text" id="input-title" /> </div> 
+    </div>
         
-        <tr> 
-            <td> Textfärg... </td> 
-            <td> 
-                <select id="input-textcolor">
-                    <option value="black">Svart</option>
-                    <option value="blue">Blå</option>
-                    <option value="red">Röd</option>
-                    <option value="darkgreen">Mörkgrön</option>
-                </select> 
-            </td>
-        </tr>
-        
-        <tr> 
-            <td> Typsnitt... </td>
-            <td> 
-                <select id="input-font">
-                    <option value="verdana"> Verdana </option>
-                    <option value="ariel"> Ariel </option>
-                    <option value="tahoma"> Tahoma </option>
-                    <option value="impact"> Impact </option>
-                </select> 
-            </td>
-        </tr>
-    </table>
+    <div class="row"> 
+        <div> Telefon... </div> 
+        <div> <input type="text" id="input-phone" /> </div> 
+    </div>
+    
+    <div class="row"> 
+        <div> E-post... </div> 
+        <div> <input type="text" id="input-email" /> </div> 
+    </div>
+
+    <div class="row">  
+        <div> Bakgrundsfärg... </div>  
+        <div> 
+            <!--Skapar en selection-box för färgen-->
+            <select id="input-backgroundcolor"> 
+                <!--Fyller boxen med värden-->
+                <option value="lightblue">Ljusblå</option> 
+                <option value="lightyellow">Ljusgul</option>
+                <option value="white">Vit</option>
+                <option value="turquoise">Turkos</option>
+            </select> 
+        </div>
+    </div>
+    
+    <div class="row"> 
+        <div> Textfärg... </div> 
+        <div> 
+            <select id="input-textcolor">
+                <option value="black">Svart</option>
+                <option value="blue">Blå</option>
+                <option value="red">Röd</option>
+                <option value="darkgreen">Mörkgrön</option>
+            </select> 
+        </div>
+    </div>
+    
+    <div class="row"> 
+        <div> Typsnitt... </div>
+        <div> 
+            <select id="input-font">
+                <option value="verdana"> Verdana </option>
+                <option value="ariel"> Ariel </option>
+                <option value="tahoma"> Tahoma </option>
+                <option value="impact"> Impact </option>
+            </select> 
+        </div>
+    </div>
     
     <!--Sätter ut knapparna-->
-    <p class="buttons">
+    <div class="buttons">
         <input type="reset" id="reset" value="Nollställ" />
         <input type="submit" id="submit" value="Skriv ut" />
-    </p>
+    </div>
 </div>
 
 <!--Skapar en sektion för att skriva ut kortet (denna göms tills "skriv ut" knappen trycks)-->
