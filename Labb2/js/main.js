@@ -45,8 +45,6 @@ document.getElementById('mainnavlist').addEventListener("click", function(e)
         {
            if (xmlhttp.status == 200) 
            {
-                //alert(xmlhttp.responseText);
-
                 var jsonData = JSON.parse(xmlhttp.responseText);
                 
                 //Hantera hämtad data
