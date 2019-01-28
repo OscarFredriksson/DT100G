@@ -9,13 +9,14 @@
 
 .input-title
 {
+    padding-top: 10px;
     padding-left: 10px;
 }
 
 .buttons
 {
     padding-top: 15px;
-    padding-left: 75px;
+    text-align: center;
 }
 
 .row 
