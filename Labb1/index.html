@@ -1,105 +1,104 @@
 <!DOCTYPE html>
 <html lang="sv">
-
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="style.css"> <!--Importera stil-mallen-->
-    
-    <title> Beställ visitkort </title>
-</head>
-
-<body>
-
-<!--Skapar en sektion för input-fälten-->
-<div class ="input-section" id="order_page">    
-
-    <h2 class="input-title"> Beställ ditt visitkort här: </h2>
-
-    <div class="row"> <!--En rad i  bestående av text + inputbox-->
-        <div> Företag... </div>
-        <div> <input type="text" id="input-company" /> </div>
-    </div>
-     
-    <div class="row"> 
-        <div> Efternamn... </div> 
-        <div> <input type="text" id="input-lastname" /> </div> 
-    </div>
-    
-    <div class="row">
-        <div> Förnamn... </div> 
-        <div> <input type="text" id="input-firstname" /> </div> 
-    </div>
-            
-    <div class="row"> 
-        <div> Titel... </div> 
-        <div> <input type="text" id="input-title" /> </div> 
-    </div>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="style.css"> <!--Importera stil-mallen-->
         
-    <div class="row"> 
-        <div> Telefon... </div> 
-        <div> <input type="text" id="input-phone" /> </div> 
-    </div>
-    
-    <div class="row"> 
-        <div> E-post... </div> 
-        <div> <input type="text" id="input-email" /> </div> 
-    </div>
+        <title> Beställ visitkort </title>
+    </head>
 
-    <div class="row">  
-        <div> Bakgrundsfärg... </div>  
-        <div> 
-            <!--Skapar en selection-box för färgen-->
-            <select id="input-backgroundcolor"> 
-                <!--Fyller boxen med värden-->
-                <option value="lightblue">Ljusblå</option> 
-                <option value="lightyellow">Ljusgul</option>
-                <option value="white">Vit</option>
-                <option value="turquoise">Turkos</option>
-            </select> 
+    <body>
+
+        <!--Skapar en sektion för input-fälten-->
+        <div class ="input-section" id="order_page">    
+
+            <h2 class="input-title"> Beställ ditt visitkort här: </h2>
+
+            <div class="row"> <!--En rad i  bestående av text + inputbox-->
+                <div> Företag... </div>
+                <div> <input type="text" id="input-company" /> </div>
+            </div>
+            
+            <div class="row"> 
+                <div> Efternamn... </div> 
+                <div> <input type="text" id="input-lastname" /> </div> 
+            </div>
+            
+            <div class="row">
+                <div> Förnamn... </div> 
+                <div> <input type="text" id="input-firstname" /> </div> 
+            </div>
+                    
+            <div class="row"> 
+                <div> Titel... </div> 
+                <div> <input type="text" id="input-title" /> </div> 
+            </div>
+                
+            <div class="row"> 
+                <div> Telefon... </div> 
+                <div> <input type="text" id="input-phone" /> </div> 
+            </div>
+            
+            <div class="row"> 
+                <div> E-post... </div> 
+                <div> <input type="text" id="input-email" /> </div> 
+            </div>
+
+            <div class="row">  
+                <div> Bakgrundsfärg... </div>  
+                <div> 
+                    <!--Skapar en selection-box för färgen-->
+                    <select id="input-backgroundcolor"> 
+                        <!--Fyller boxen med värden-->
+                        <option value="lightblue"> Ljusblå </option> 
+                        <option value="lightyellow"> Ljusgul </option>
+                        <option value="white"> Vit </option>
+                        <option value="turquoise"> Turkos </option>
+                    </select> 
+                </div>
+            </div>
+            
+            <div class="row"> 
+                <div> Textfärg... </div> 
+                <div> 
+                    <select id="input-textcolor">
+                        <option value="black"> Svart </option>
+                        <option value="blue"> Blå </option>
+                        <option value="red"> Röd </option>
+                        <option value="darkgreen"> Mörkgrön </option>
+                    </select> 
+                </div>
+            </div>
+            
+            <div class="row"> 
+                <div> Typsnitt... </div>
+                <div> 
+                    <select id="input-font">
+                        <option value="verdana"> Verdana </option>
+                        <option value="ariel"> Ariel </option>
+                        <option value="tahoma"> Tahoma </option>
+                        <option value="impact"> Impact </option>
+                    </select> 
+                </div>
+            </div>
+            
+            <!--Sätter ut knapparna-->
+            <div class="buttons">
+                <input type="reset" id="reset" value="Nollställ" />
+                <input type="submit" id="submit" value="Skriv ut" />
+            </div>
         </div>
-    </div>
-    
-    <div class="row"> 
-        <div> Textfärg... </div> 
-        <div> 
-            <select id="input-textcolor">
-                <option value="black">Svart</option>
-                <option value="blue">Blå</option>
-                <option value="red">Röd</option>
-                <option value="darkgreen">Mörkgrön</option>
-            </select> 
+
+        <!--Skapar en sektion för att skriva ut kortet (denna göms tills "skriv ut" knappen trycks)-->
+        <div class="card-section" id="result_page">
+            <p class="card-company" id="card-company"></p>
+            <p class="card-name"    id="card-name"></p>
+            <p class="card-title"   id="card-title"></p>
+            <p class="card-phone"   id="card-phone"></p>
+            <p class="card-email"   id="card-email"></p>
         </div>
-    </div>
-    
-    <div class="row"> 
-        <div> Typsnitt... </div>
-        <div> 
-            <select id="input-font">
-                <option value="verdana"> Verdana </option>
-                <option value="ariel"> Ariel </option>
-                <option value="tahoma"> Tahoma </option>
-                <option value="impact"> Impact </option>
-            </select> 
-        </div>
-    </div>
-    
-    <!--Sätter ut knapparna-->
-    <div class="buttons">
-        <input type="reset" id="reset" value="Nollställ" />
-        <input type="submit" id="submit" value="Skriv ut" />
-    </div>
-</div>
 
-<!--Skapar en sektion för att skriva ut kortet (denna göms tills "skriv ut" knappen trycks)-->
-<div class="card-section" id="result_page">
-        <p class="card-company" id="card-company"></p>
-        <p class="card-name" id="card-name"></p>
-        <p class="card-title" id="card-title"></p>
-        <p class="card-phone" id="card-phone"></p>
-        <p class="card-email" id="card-email"></p>
-</div>
+        <script src="script.js"></script> <!--importera skriptet-->
 
-<script src="script.js"></script> <!--importera skriptet-->
-
-</body>
+    </body>
 </html>
