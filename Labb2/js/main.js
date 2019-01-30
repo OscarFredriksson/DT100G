@@ -48,7 +48,23 @@ document.getElementById('mainnavlist').addEventListener("click", function(e)
                 var jsonData = JSON.parse(xmlhttp.responseText);
                 
                 //Hantera hämtad data
-                
+                for(var i = 0; i < jsonData.matchningslista.matchningdata.length; i++)
+                {
+                    var element = document.getElementById("info");
+
+                    //Data:
+                    element.innerHTML += "<h3>" + jsonData.matchningslista.matchningdata[i].annonsrubrik + "</h3>";
+                    element.innerHTML += "<h4>" + jsonData.matchningslista.matchningdata[i].yrkesbenamning + "</h4>";
+                    element.innerHTML += "<h4>" + "Anställningstyp: " +  "??????????" + "</h4>";
+                    element.innerHTML += "<h4>" + "Antal platser: " + jsonData.matchningslista.matchningdata[i].antalplatser + "</h4>";
+                    element.innerHTML += "<h4>" + "Publicersingsdatum: " + jsonData.matchningslista.matchningdata[i].publiceraddatum + "</h4>";
+                    element.innerHTML += "<h4>" + "Sista ansökningsdag: " + "??????????" + "</h4>";
+                    
+                    //Knapp:
+                    element.innerHTML += "<form action='" + jsonData.matchningslista.matchningdata[i].annonsurl + "'><button type='searchbutton' class='btn'> Läs Mer </button></form>";
+                    
+                    element.innerHTML += "<hr>";    //Divider line
+                }
            }
            else if (xmlhttp.status == 400)  alert('There was an error 400');
            else                             alert('something else other than 200 was returned');
