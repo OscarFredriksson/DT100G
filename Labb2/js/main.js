@@ -2,10 +2,17 @@
 
 var baseURL = "http://api.arbetsformedlingen.se/af/v0";
 
+//Körs när hemsidan öppnas
+document.addEventListener("DOMContentLoaded", loadFront(), false); 
+document.getElementById("logo").addEventListener('click', loadFront, false);
 
-//Körs när hemsidan öppnas??
-document.addEventListener("DOMContentLoaded", function()
-{ 
+function loadFront()
+{
+    var lanlista = document.getElementById("mainnavlist");
+    lanlista.innerHTML = "";
+
+    document.getElementById("info").innerHTML = "";
+
     var xmlhttp = new XMLHttpRequest();
 
     // Read all LÄN and dynamically create list from AF
@@ -19,8 +26,8 @@ document.addEventListener("DOMContentLoaded", function()
                 var jsonData = JSON.parse(xmlhttp.responseText);
                 for(var i = 0; i < jsonData.soklista.sokdata.length; i++)
                 {
-                   document.getElementById("mainnavlist").innerHTML += "<li id='" + jsonData.soklista.sokdata[i].id + "'>" + jsonData.soklista.sokdata[i].namn + " (" + jsonData.soklista.sokdata[i].antal_ledigajobb + ")</li>";    
-                   document.getElementById("searchlan").innerHTML += "<option value='" + jsonData.soklista.sokdata[i].id + "'>" + jsonData.soklista.sokdata[i].namn + "</option>";      
+                    lanlista.innerHTML += "<li id='" + jsonData.soklista.sokdata[i].id + "'>" + jsonData.soklista.sokdata[i].namn + " (" + jsonData.soklista.sokdata[i].antal_ledigajobb + ")</li>";    
+                    document.getElementById("searchlan").innerHTML += "<option value='" + jsonData.soklista.sokdata[i].id + "'>" + jsonData.soklista.sokdata[i].namn + "</option>";      
                 }
            }
            else if (xmlhttp.status == 400)  alert('There was an error 400');
@@ -31,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function()
 
     xmlhttp.open("GET", baseURL + "/platsannonser/soklista/lan", true);
     xmlhttp.send();
-}); 
+};
 
 
 //Körs när ett av länen i listan klickas
