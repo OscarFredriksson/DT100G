@@ -51,10 +51,10 @@ function loadData(data)
     //Data:
     element.innerHTML += "<h3>" + data.annonsrubrik + "</h3>";
     element.innerHTML += "<h4>" + data.yrkesbenamning + "</h4>";
-    element.innerHTML += "<h4>" + "Anställningstyp: " +  "??????????" + "</h4>";
+    element.innerHTML += "<h4>" + "Anställningstyp: " +  data.anstallningstyp + "</h4>";
     element.innerHTML += "<h4>" + "Antal platser: " + data.antalplatser + "</h4>";
     element.innerHTML += "<h4>" + "Publicersingsdatum: " + data.publiceraddatum + "</h4>";
-    element.innerHTML += "<h4>" + "Sista ansökningsdag: " + "??????????" + "</h4>";
+    element.innerHTML += "<h4>" + "Sista ansökningsdag: " + data.sista_ansokningsdag + "</h4>";
     
     //Knapp:
     element.innerHTML += "<form action='" + data.annonsurl + "'><button type='searchbutton' class='btn'> Läs Mer </button></form>";
@@ -65,6 +65,16 @@ function loadData(data)
 function loadRegionContent(regionID)
 {
     document.getElementById("info").innerHTML = "";
+
+    var rows = document.getElementById("numrows").value;
+    var onlyIT = document.getElementById("onlyit").checked;
+
+    //Bygg ihop request-strängen:
+    var request = baseURL + "/platsannonser/matchning?lanid=" + regionID + "&antalrader=" + rows;
+    
+    if(onlyIT) request += "&yrkesomradeid=3";    //Om onlyIT är ibockad, lägg till specificering av yrkesområde
+
+    
 
     var xmlhttp = new XMLHttpRequest();
 
@@ -84,7 +94,6 @@ function loadRegionContent(regionID)
         }
     };
 
-    var request = baseURL + "/platsannonser/matchning?lanid=" + regionID
     xmlhttp.open("GET", request, true);
     xmlhttp.send();
 
@@ -121,6 +130,8 @@ document.getElementById("searchbutton").addEventListener("click", function()
                     element.innerHTML += "<h3>" + data.namn + "</h3>";
                     element.innerHTML += "<h4>" + "Antal platsannonser: " + data.antal_platsannonser + "</h4>";
                     element.innerHTML += "<h4>" + "Antal lediga jobb:" + data.antal_ledigajobb + "</h4>";
+                    element.innerHTML += "<h4>" + "ID: " + data.id + "</h4>";
+                    element.innerHTML += "<h4>" + "Namn: " + data.namn + "</h4>";
                     
                     element.innerHTML += "<hr>";    //Divider line
                 });                
