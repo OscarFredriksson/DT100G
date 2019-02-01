@@ -18,7 +18,6 @@ function loadFront()
 
     var xmlhttp = new XMLHttpRequest();
 
-    // Read all LÄN and dynamically create list from AF
     xmlhttp.onreadystatechange = function() 
     {
         if (xmlhttp.readyState == XMLHttpRequest.DONE) 
@@ -74,7 +73,7 @@ function loadRegionContent(regionID)
     
     if(onlyIT) request += "&yrkesomradeid=3";    //Om onlyIT är ibockad, lägg till specificering av yrkesområde
 
-    
+
 
     var xmlhttp = new XMLHttpRequest();
 
