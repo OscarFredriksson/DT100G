@@ -1,12 +1,75 @@
 
-.question
+body
 {
-    padding-left: 20px;
+    font-family: 'Open Sans'
+}
+
+.question 
+{
     font-weight: bold;
 }
 
 .answer
 {
     font-weight: 100;
-    padding-left: 20px;
+}
+
+.info-title
+{
+    font-weight: bold;
+}
+
+.info-text
+{
+    font-weight: 100;
+}
+
+.title
+{
+    float: left;
+    background-color: #555;
+    color: #fff;
+    height: 50px;
+    line-height: 50px;
+    margin: 0;
+    padding: 0;
+    padding-left: 50px;
+    padding-right: 50px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.nav
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #555;
+}
+
+.nav li
+{
+    float: left;
+}
+
+.nav a
+{
+    display: block;
+    color: #fff;
+    padding: 14px 16px;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Open Sans';
+    
+}
+
+.nav a:hover
+{
+    background-color:#333;
+}
+
+.nav .active
+{
+    background-color: #4ABDAC;
 }
