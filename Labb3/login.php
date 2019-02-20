@@ -4,14 +4,15 @@
 
     <body class="login">
 
-        <div>
-            <p > Username </p>
+        <div class="row">
+            <div class="text"> Username </div>
             <input type="text" />
-            
-            <p> Password </p>
-            <input type="text" />
+        
+            <div class="text"> Password </div>
+            <input type="password" />
 
             <input type="submit" />
+                    
         </div>
 
     </body>

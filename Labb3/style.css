@@ -73,13 +73,12 @@ body
     background-color: #4ABDAC;
 }
 
-
 .login
 {
     background-color: #999;
 }
 
-.login div
+.login .row
 {
     border-radius: 10px;
     background-color: #fff;
@@ -87,27 +86,24 @@ body
     height: 200px;
     margin: auto;
     margin-top: 10px;
-    display: flex;
-    flex-flow: column wrap;
+    text-align: center;
 }
 
-.login p
+.login .text
 {
     font-size: 14px;
     font-weight: bold;
+    padding: 0;
     margin: 0;
     margin-top: 10px;
-    padding: 0;
-    margin-left: 30px;
+    margin-right: 100px;
 }
 
 .login input
 {
-    flex-grow: 1;
     padding: 0;
     margin-top: 0px;
     margin-bottom: 10px;
     margin-left: 20px;
     margin-right: 20px;
-    
 }
