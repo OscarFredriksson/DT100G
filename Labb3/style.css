@@ -1,7 +1,7 @@
-
 body
 {
-    font-family: 'Open Sans'
+    font-family: 'Open Sans';
+    margin: 0;
 }
 
 .question 
@@ -24,7 +24,8 @@ body
     font-weight: 100;
 }
 
-.title
+
+.header-title
 {
     float: left;
     background-color: #555;
@@ -59,9 +60,7 @@ body
     color: #fff;
     padding: 14px 16px;
     text-decoration: none;
-    text-align: center;
-    font-family: 'Open Sans';
-    
+    text-align: center;    
 }
 
 .nav a:hover
@@ -72,4 +71,43 @@ body
 .nav .active
 {
     background-color: #4ABDAC;
+}
+
+
+.login
+{
+    background-color: #999;
+}
+
+.login div
+{
+    border-radius: 10px;
+    background-color: #fff;
+    width: 300px;
+    height: 200px;
+    margin: auto;
+    margin-top: 10px;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.login p
+{
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+    margin-top: 10px;
+    padding: 0;
+    margin-left: 30px;
+}
+
+.login input
+{
+    flex-grow: 1;
+    padding: 0;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    
 }

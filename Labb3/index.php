@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="sv">
-    
-    <?php include("head.php"); ?>       
+    <?php include("includes/head.php"); ?>       
 
     <body>
 
         <?php $currentPage = 'index' ?>
-        <?php include("navigation.php"); ?>
+        <?php include("includes/navigation.php"); ?>
 
         <div class="questions">
             <ul>
