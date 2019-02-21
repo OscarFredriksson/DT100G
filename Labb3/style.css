@@ -1,6 +1,6 @@
 body
 {
-    font-family: 'Open Sans';
+    font-family: 'Roboto';
     margin: 0;
 }
 
@@ -43,6 +43,7 @@ body
 .nav
 {
     list-style-type: none;
+    height: 50px;
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -52,6 +53,9 @@ body
 .nav li
 {
     float: left;
+    height: 50px;
+    margin: 0;
+    padding: 0;
 }
 
 .nav a
@@ -75,35 +79,56 @@ body
 
 .login
 {
-    background-color: #999;
+    background-color: #777;
+}
+
+.login .login-box
+{
+    background-color: #CCC;
+    border-radius: 0px;
+    width: 300px;
+    height: 200px;
+    margin: auto;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;    /*Horisontell center*/
+    align-items: center;        /*Vertikal center*/
 }
 
 .login .row
 {
-    border-radius: 10px;
-    background-color: #fff;
-    width: 300px;
-    height: 200px;
-    margin: auto;
-    margin-top: 10px;
-    text-align: center;
+    display: flex;
+    padding: 0;
+    width: 260px;
+    margin-bottom: 20px;
+    height: 40px;
 }
 
-.login .text
+.icon 
 {
-    font-size: 14px;
-    font-weight: bold;
-    padding: 0;
+    padding: 7.5px;
+    background: #4ABDAC;
+    background-position: bottom right;
+    color: white;
+  }
+
+.login .box
+{
+    width: 100%;
     margin: 0;
-    margin-top: 10px;
-    margin-right: 100px;
+    border: 0;
+    text-indent: 10px;
 }
 
-.login input
+.login .button
 {
-    padding: 0;
-    margin-top: 0px;
-    margin-bottom: 10px;
-    margin-left: 20px;
-    margin-right: 20px;
+    display: inline-block;
+    width: 100%;
+    margin: 0;
+    border: 0;
+    font-size: 15px;
+    height: 40px;
+    border-radius: 0px;
+    background-color: #4ABDAC;
+    color: #fff;
 }

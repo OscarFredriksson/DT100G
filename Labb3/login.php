@@ -4,15 +4,20 @@
 
     <body class="login">
 
-        <div class="row">
-            <div class="text"> Username </div>
-            <input type="text" />
-        
-            <div class="text"> Password </div>
-            <input type="password" />
+        <div class="login-box">
+            <div class="items">
+                <div class="row">
+                    <i class="material-icons icon">account_circle</i>
+                    <input class="box" type="text" placeholder="Användarnamn"/>
+                </div>
 
-            <input type="submit" />
-                    
+                <div class="row">
+                    <i class="material-icons icon">vpn_key</i>
+                    <input class="box" type="password" placeholder="Lösenord"/>
+                </div>
+                
+                <input class="button" type="submit" value="LOGGA IN"/>
+            </div>        
         </div>
 
     </body>
