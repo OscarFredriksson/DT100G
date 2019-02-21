@@ -3,23 +3,37 @@
     <?php include("includes/head.php"); ?>
 
     <body>
+        <div class="wrapper">
+            <?php $currentPage = 'info' ?>
+            <?php include("includes/header.php"); ?>
 
-        <?php $currentPage = 'info' ?>
-        <?php include("includes/header.php"); ?>
-
-        <div class="info">
-            <ul>
-                <li class="info-title"> Datum/Klockslag: <span class="info-text"> <?php echo date("Y-m-d H:i:s") ?> </span> </li> 
+            <ul class="flat-box">
+                <li> 
+                    <p class="upper-text"> Datum/Klockslag </p>
+                    <hr>
+                    <p class="lower-text"> <?php echo date("Y-m-d H:i:s") ?> </p> 
+                </li> 
                 
-                <li class="info-title"> Din IP-adress: <span class="info-text"> <?php echo $_SERVER['REMOTE_ADDR'] ?> </span> </li>
+                <li> 
+                    <p class="upper-text"> IP-adress </p>
+                    <hr>
+                    <p class="lower-text"> <?php echo $_SERVER['REMOTE_ADDR'] ?> </p> 
+                </li>
                 
-                <li class="info-title"> Sökväg/Filnamn: <span class="info-text"> <?php echo getcwd() ?> </span> </li>
+                <li> 
+                    <p class="upper-text"> Sökväg/Filnamn </p>
+                    <hr>
+                    <p class="lower-text"> <?php echo getcwd() ?> </p>
+                </li>
                 
-                <li class="info-title"> User agent-sträng: <span class="info-text"> <?php echo $_SERVER['HTTP_USER_AGENT'] ?> </span> </li>
+                <li> 
+                    <p class="upper-text"> User agent-sträng </p>
+                    <hr>
+                    <p class="lower-text"> <?php echo $_SERVER['HTTP_USER_AGENT'] ?> </p> 
+                </li>
             </ul>   
+
+            <?php include("includes/footer.php") ?>
         </div>
-
-        <?php include("includes/footer.php") ?>
-
     </body>
 </html>
