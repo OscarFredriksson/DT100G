@@ -5,7 +5,7 @@
     <body>
 
         <?php $currentPage = 'info' ?>
-        <?php include("includes/navigation.php"); ?>
+        <?php include("includes/header.php"); ?>
 
         <div class="info">
             <ul>
@@ -18,6 +18,8 @@
                 <li class="info-title"> User agent-sträng: <span class="info-text"> <?php echo $_SERVER['HTTP_USER_AGENT'] ?> </span> </li>
             </ul>   
         </div>
+
+        <?php include("includes/footer.php") ?>
 
     </body>
 </html>

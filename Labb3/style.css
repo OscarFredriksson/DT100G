@@ -1,86 +1,4 @@
-body
-{
-    font-family: 'Roboto';
-    margin: 0;
-}
 
-.question 
-{
-    font-weight: bold;
-}
-
-.answer
-{
-    font-weight: 100;
-}
-
-.info-title
-{
-    font-weight: bold;
-}
-
-.info-text
-{
-    font-weight: 100;
-}
-
-
-.header-title
-{
-    float: left;
-    background-color: #555;
-    color: #fff;
-    height: 50px;
-    line-height: 50px;
-    margin: 0;
-    padding: 0;
-    padding-left: 50px;
-    padding-right: 50px;
-    text-align: center;
-    vertical-align: middle;
-}
-
-.nav
-{
-    list-style-type: none;
-    height: 50px;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #555;
-}
-
-.nav li
-{
-    float: left;
-    height: 50px;
-    margin: 0;
-    padding: 0;
-}
-
-.nav a
-{
-    display: block;
-    color: #fff;
-    padding: 14px 16px;
-    text-decoration: none;
-    text-align: center;    
-}
-
-.nav a:hover
-{
-    background-color:#333;
-}
-
-.nav .active
-{
-    background-color: #4ABDAC;
-}
-
-.login
-{
-    background-color: #777;
-}
 
 .login .login-box
 {
@@ -93,6 +11,7 @@ body
     display: flex;
     justify-content: center;    /*Horisontell center*/
     align-items: center;        /*Vertikal center*/
+    border-radius: 5px;
 }
 
 .login .row
@@ -110,7 +29,8 @@ body
     background: #4ABDAC;
     background-position: bottom right;
     color: white;
-  }
+    border-radius: 5px 0px 0px 5px;
+}
 
 .login .box
 {
@@ -118,6 +38,7 @@ body
     margin: 0;
     border: 0;
     text-indent: 10px;
+    border-radius: 0px 5px 5px 0px;
 }
 
 .login .button
@@ -130,5 +51,164 @@ body
     height: 40px;
     border-radius: 0px;
     background-color: #4ABDAC;
+    color: #fff;
+    border-radius: 5px;
+}
+
+header
+{
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    background-color: #555;
+    height: 50px;
+    width: 100%;
+    position: fixed;
+}
+
+.info-title
+{
+    font-weight: bold;
+}
+
+.info-text
+{
+    font-weight: 100;
+}
+
+
+.header-title
+{
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    padding-left: 50px;
+    padding-right: 50px;
+
+}
+
+.nav
+{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.nav li
+{
+    height: 50px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav a
+{
+    display: block;
+    color: #fff;
+    margin: 0;
+    padding: 16px;  /* centrera texten */
+    padding-left: 20px;
+    padding-right: 20px;
+    text-decoration: none;  
+}
+
+.nav a:hover
+{
+    background-color:#333;
+}
+
+.nav .active
+{
+    background-color: #4ABDAC;
+}
+
+body
+{
+    font-family: 'Roboto';
+    margin: 0;
+    background-color: #777;
+}
+
+.wrapper
+{
+    display: flex;
+    flex-direction: column;  
+    background-color: #4ABDAC;
+    height: 100%;
+    width: 100%; 
+    position: absolute;
+}
+
+.questions
+{
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    margin-top: 50px;
+    padding: 0;
+    padding-bottom: 60px;
+    overflow: auto;
+    text-align: center;
+}
+
+.questions ul
+{
+    list-style-type: none;
+    margin: auto;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.questions li
+{
+    background-color: #fff;
+    margin: auto;
+    width: 80%;
+    max-width: 1000px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.15);
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.questions .question
+{
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.5em;
+    margin: 20px;
+    padding: 0;
+}
+
+.questions .answer
+{
+    font-weight: 200;
+    background-color: #EEE;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+
+footer
+{
+    display: flex;
+    justify-content: space-evenly;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: #333;
+}
+
+footer p
+{
+    font-size: 12px;
     color: #fff;
 }
