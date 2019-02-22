@@ -11,14 +11,22 @@
     height: 200px;
     margin: auto;
     margin-top: 40px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;    /*Horisontell center*/
-    align-items: center;        /*Vertikal center*/
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;    /*Horisontell center*/
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;        /*Vertikal center*/
     border-radius: 5px;
 }
 
 .login .row
 {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     padding: 0;
     width: 260px;
@@ -60,25 +68,19 @@
 
 header
 {
-    flex-shrink: 0;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     background-color: #555;
     height: 50px;
     width: 100%;
     position: fixed;
 }
-
-.info-title
-{
-    font-weight: bold;
-}
-
-.info-text
-{
-    font-weight: 100;
-}
-
 
 .header-title
 {
@@ -93,8 +95,12 @@ header
 .nav
 {
     height: 50px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -148,8 +154,13 @@ html, body
 {
     height: 100%; 
     width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;  
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;  
     margin: 0;
     padding: 0;
 }
@@ -162,12 +173,13 @@ html, body
     background-color: #DDD;
     padding-top: 50px;
     padding-bottom: 60px;
-    flex-grow: 1;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
 }
 
 .flat-box
 {
-    list-style-type: none;
     background-color: #FFF;
     margin: auto;
     width: 50%;
@@ -212,8 +224,12 @@ html, body
 
 footer
 {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-evenly;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
     position: fixed;
     bottom: 0;
     right: 0;
