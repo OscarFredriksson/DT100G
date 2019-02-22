@@ -1,4 +1,7 @@
-
+:root
+{
+    --accent-color: #4ABDAC;
+}
 
 .login .login-box
 {
@@ -26,7 +29,7 @@
 .login .icon 
 {
     padding: 7.5px;
-    background: #4ABDAC;
+    background: var(--accent-color);
     background-position: bottom right;
     color: white;
     border-radius: 5px 0px 0px 5px;
@@ -50,7 +53,7 @@
     font-size: 15px;
     height: 40px;
     border-radius: 0px;
-    background-color: #4ABDAC;
+    background-color: var(--accent-color);
     color: #fff;
     border-radius: 5px;
 }
@@ -123,48 +126,56 @@ header
 
 .nav .active
 {
-    background-color: #4ABDAC;
+    background-color: var(--accent-color);
 }
 
-body
+html
+{
+    overflow-y: scroll; /*Visa alltid scrollbaren, ger snyggare övergång mellan sidor*/
+}
+
+html, body
 {
     font-family: 'Roboto';
     margin: 0;
+    padding: 0;
     background-color: #777;
+    min-height: 100%;
+    height: 100%;
 }
 
 .wrapper
 {
+    height: 100%; 
+    width: 100%;
     display: flex;
     flex-direction: column;  
-    background-color: #CCC;
-    height: 100%;
-    width: 100%; 
+    margin: 0;
+    padding: 0;
+}
+
+.box-list
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #DDD;
+    padding-top: 50px;
+    padding-bottom: 60px;
+    flex-grow: 1;
 }
 
 .flat-box
 {
     list-style-type: none;
-    margin: auto;
-    margin-top: 50px;
-    margin-bottom: 60px;
-    padding: 0;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-.flat-box li
-{
-    list-style-type: none;
     background-color: #FFF;
     margin: auto;
-    width: 80%;
+    width: 50%;
     max-width: 1000px;
     margin-top: 20px;
     border-radius: 5px;
     padding: 20px;
+    
 }
 
 .flat-box .upper-text
@@ -190,9 +201,9 @@ body
 .flat-box .lower-text
 {
     color: #555;
+    text-align: center;
     font-weight: 200;
     font-size: 16px;
-    background-color: #fff;
     margin: 0;
     padding: 5px;
     margin-top: 15px;
@@ -207,7 +218,7 @@ footer
     bottom: 0;
     right: 0;
     left: 0;
-    background-color: #333;
+    background-color: #555;
 }
 
 footer p
