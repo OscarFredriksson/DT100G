@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="sv">
-    <?php include("includes/head.php"); ?>
+    <?php 
+        session_start();
+
+        include("includes/head.php"); 
+    ?>
+
+
 
     <body class="login">
 

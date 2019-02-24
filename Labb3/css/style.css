@@ -1,11 +1,13 @@
 :root
 {
     --accent-color: #4ABDAC;
+    --light-background-color: #CCC;
+    --header-color: #555;
 }
 
 .login .login-box
 {
-    background-color: #CCC;
+    background-color: var(--light-background-color);
     border-radius: 0px;
     width: 300px;
     height: 200px;
@@ -62,7 +64,7 @@
     height: 40px;
     border-radius: 0px;
     background-color: var(--accent-color);
-    color: #fff;
+    color: white;
     border-radius: 5px;
 }
 
@@ -76,15 +78,16 @@ header
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    background-color: #555;
+    background-color: var(--header-color);
     height: 50px;
     width: 100%;
     position: fixed;
+    font-family: 'Roboto';
 }
 
 .header-title
 {
-    color: #fff;
+    color: white;
     margin: 0;
     padding: 0;
     padding-left: 50px;
@@ -117,7 +120,7 @@ header
 .nav a
 {
     display: block;
-    color: #fff;
+    color: white;
     margin: 0;
     padding: 16px;  /* centrera texten */
     padding-left: 20px;
@@ -142,7 +145,7 @@ html
 
 html, body
 {
-    font-family: 'Roboto';
+    font-family: 'Open Sans';
     margin: 0;
     padding: 0;
     background-color: #777;
@@ -170,7 +173,7 @@ html, body
     list-style-type: none;
     margin: 0;
     padding: 0;
-    background-color: #DDD;
+    background-color: var(--light-background-color);
     padding-top: 50px;
     padding-bottom: 60px;
     -webkit-box-flex: 1;
@@ -180,10 +183,10 @@ html, body
 
 .flat-box
 {
-    background-color: #FFF;
+    background-color: white;
     margin: auto;
     width: 50%;
-    max-width: 1000px;
+    max-width: 750px;
     margin-top: 20px;
     border-radius: 5px;
     padding: 20px;
@@ -234,11 +237,12 @@ footer
     bottom: 0;
     right: 0;
     left: 0;
-    background-color: #555;
+    background-color: var(--header-color);
+    font-family: 'Roboto';
 }
 
 footer p
 {
     font-size: 12px;
-    color: #fff;
+    color: white;
 }
