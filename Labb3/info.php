@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="sv">
-    <?php include("includes/head.php"); ?>
+    <?php 
+        session_start();
+
+        if(!$_SESSION["loggedin"])  header("Location: login.php");
+
+        include("includes/head.php"); 
+    ?>
 
     <body>
         <div class="wrapper">

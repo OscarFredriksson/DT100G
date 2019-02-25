@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="sv">
-    <?php include("includes/head.php"); ?>       
+    <?php 
+        session_start();
+
+        if(!$_SESSION["loggedin"])  header("Location: login.php");
+    
+        include("includes/head.php"); 
+    ?>      
 
     <body>
         <div class="wrapper">
@@ -18,8 +24,7 @@
                     <p class="upper-text"> Hur har du valt att strukturera upp dina filer och kataloger? </p>
                     <hr>
                     <p class="lower-text"> Jag har lagt alla php filer som includeras inom andra filer i en egen mapp, resten ligger i grundkatalogen. </p> 
-                </li> 
-                
+                </li>  
                 
                 <li class="flat-box"> 
                     <p class="upper-text"> Har du följt guiden, eller skapat på egen hand? </p>

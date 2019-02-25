@@ -1,4 +1,4 @@
-:root
+:root   /*Variabler för färger */
 {
     --accent-color: #4ABDAC;
     --light-background-color: #CCC;
@@ -66,6 +66,7 @@
     background-color: var(--accent-color);
     color: white;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 header
