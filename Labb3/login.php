@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="sv">
     <?php 
-        $username = "oscar";
-        $password = "7892457348";
+        
+
+        require("requires/session.php");
+        session_start();
+        logout();
 
         include("includes/head.php"); 
-
-        logout();
     ?>
 
     <body class="login">
@@ -32,22 +33,9 @@
 
 
         <?php 
-            
             if(!empty($_POST))
             {
-                if($_POST["username"] === $username && $_POST["password"] === $password)
-                {
-                    $_SESSION["loggedin"] = true;
-                    header("Location: index.php");
-                }
-                else if (empty($_POST["username"]) || empty($_POST["password"])) 
-                {
-                    echo "Tomma fält";
-                }            
-                else
-                {
-                    echo "Fel användarnamn eller lösenord";
-                }
+                check_login($_POST["username"], $_POST["password"]);
             }
         ?>
     

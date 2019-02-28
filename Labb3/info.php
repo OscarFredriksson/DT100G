@@ -2,9 +2,12 @@
 <html lang="sv">
     
     <?php 
+        require("requires/session.php");
+        check_session();
+
         $currentPage = 'info';
+        
         include("includes/head.php"); 
-        if($_SESSION["loggedin"] == false)  header("Location: login.php");
     ?>
 
     <body>
