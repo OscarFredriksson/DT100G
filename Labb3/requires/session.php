@@ -8,10 +8,18 @@
         {
             $_SESSION["LOGGED_IN"] = true;
             header("Location: index.php");
-        }         
+        } 
+        else if(strlen($username) == 0)
+        {
+            echo '<script> alert("Du måste fylla i ett användarnamn"); </script>';
+        }
+        else if(strlen($password) == 0)
+        {
+            echo '<script> alert("Du måste fylla i ett lösenord"); </script>';
+        }
         else
         {
-            echo "Fel användarnamn eller lösenord";
+            echo '<script> alert("Fel användarnamn eller lösenord"); </script>';
         }
     }
 
@@ -39,7 +47,11 @@
 
         if (isset($_SESSION['LAST_ACTIVITY']) && ($time - $_SESSION['LAST_ACTIVITY']) > $timeout_duration) 
         {
-            logout();
+            echo "<script> 
+                alert('Du har blivit utloggad pågrund av inaktivitet'); 
+                window.location.href='login.php';
+            </script>";
+            
         }
 
         $_SESSION['LAST_ACTIVITY'] = $time;
@@ -52,6 +64,5 @@
         check_timeout();
 
         check_if_logged_in();
-
     }
 ?>
