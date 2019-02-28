@@ -118,6 +118,11 @@ header
     padding: 0;
 }
 
+.nav :last-child
+{
+    align-self: flex-end;
+}
+
 .nav a
 {
     display: block;

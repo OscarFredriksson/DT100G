@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="sv">
+    
     <?php 
-        session_start();
-
-        if(!$_SESSION["loggedin"])  header("Location: login.php");
-
+        $currentPage = 'info';
         include("includes/head.php"); 
+        if($_SESSION["loggedin"] == false)  header("Location: login.php");
     ?>
 
     <body>
         <div class="wrapper">
-            <?php $currentPage = 'info' ?>
             <?php include("includes/header.php"); ?>
 
             <ul class="box-list">
