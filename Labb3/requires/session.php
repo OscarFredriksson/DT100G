@@ -8,11 +8,7 @@
         {
             $_SESSION["LOGGED_IN"] = true;
             header("Location: index.php");
-        }
-        else if (empty($_POST["username"]) || empty($_POST["password"])) 
-        {
-            echo "Tomma fält";
-        }            
+        }         
         else
         {
             echo "Fel användarnamn eller lösenord";
