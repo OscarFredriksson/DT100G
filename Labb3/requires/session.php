@@ -31,8 +31,9 @@
         }
     }
     
-    function logout()
+    function new_session()
     {
+        session_start();
         session_unset();
         session_destroy();
         session_start();
@@ -40,8 +41,7 @@
 
     function check_timeout()
     {
-
-        $timeout_duration = 5;
+        $timeout_duration = 900;    //15 min
 
         $time = $_SERVER['REQUEST_TIME'];
 
@@ -60,9 +60,9 @@
     function check_session()
     {
         session_start();
-        
-        check_timeout();
 
         check_if_logged_in();
+        
+        check_timeout();
     }
 ?>

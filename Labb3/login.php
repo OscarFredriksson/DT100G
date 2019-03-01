@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="sv">
     <?php 
-        
-
         require("requires/session.php");
-        session_start();
-        logout();
+        new_session();
 
         include("includes/head.php"); 
     ?>
