@@ -11,23 +11,23 @@
 
         <form method="post">
 
-            <div class="login-box">
-                <div class="items">
-                    <div class="row">
-                        <i class="material-icons icon">account_circle</i>
-                        <input class="box" type="text" name="username" placeholder="Användarnamn"/>
-                    </div>
+            <ul>
+                <li class="input-row">
+                    <i class="material-icons icon">account_circle</i>
+                    <input class="field" type="text" name="username" placeholder="Användarnamn"/>
+                </li>
 
-                    <div class="row">
-                        <i class="material-icons icon">vpn_key</i>
-                        <input class="box" type="password" name="password" placeholder="Lösenord"/>
-                    </div>
-                    
-                    <input class="button" type="submit" name="btn" value="LOGGA IN"/>
-                </div>        
-            </div>
+                <li class="input-row">
+                    <i class="material-icons icon">vpn_key</i>
+                    <input class="field" type="password" name="password" placeholder="Lösenord"/>
+                </li>
+                
+                <li>
+                    <input class="button" type="submit" name="btn" value="LOGGA IN"/> 
+                </li>
+            </ul>
+
         </form>
-
 
         <?php 
             if(!empty($_POST))
@@ -35,7 +35,6 @@
                 check_login($_POST["username"], $_POST["password"]);
             }
         ?>
-    
 
     </body>
 </html>

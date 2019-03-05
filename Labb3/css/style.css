@@ -3,32 +3,28 @@
     --accent-color: #4ABDAC;
     --light-background-color: #CCC;
     --header-color: #555;
+    --tooltipbox-color: #333;
 }
 
-.login .login-box
+.login ul
 {
     background-color: var(--light-background-color);
     border-radius: 0px;
     width: 300px;
     height: 200px;
     margin: auto;
-    margin-top: 40px;
-    display: -webkit-box;
-    display: -ms-flexbox;
+    margin-top: 50px;
     display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;    /*Horisontell center*/
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;        /*Vertikal center*/
+    flex-direction: column;
+    justify-content: center;    /*Horisontell center*/
+    align-items: center;        /*Vertikal center*/
     border-radius: 5px;
+    padding: 0;
+    list-style-type: none;
 }
 
-.login .row
+.login .input-row
 {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     padding: 0;
     width: 260px;
@@ -41,11 +37,13 @@
     padding: 7.5px;
     background: var(--accent-color);
     background-position: bottom right;
+    cursor: default;
     color: white;
     border-radius: 5px 0px 0px 5px;
+    margin: 0;
 }
 
-.login .box
+.login .field
 {
     width: 100%;
     margin: 0;
@@ -57,7 +55,7 @@
 .login .button
 {
     display: inline-block;
-    width: 100%;
+    width: 260px;
     margin: 0;
     border: 0;
     font-size: 15px;
@@ -71,14 +69,9 @@
 
 header
 {
-    -ms-flex-negative: 0;
-        flex-shrink: 0;
-    display: -webkit-box;
-    display: -ms-flexbox;
+    flex-shrink: 0;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    align-items: center;
     background-color: var(--header-color);
     height: 50px;
     width: 100%;
@@ -99,14 +92,10 @@ header
 .nav
 {
     height: 50px;
-    display: -webkit-box;
-    display: -ms-flexbox;
     flex-grow: 1;
     display: flex;
     justify-content: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    align-items: center;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -166,13 +155,8 @@ html, body
 {
     height: 100%; 
     width: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;  
+    flex-direction: column;  
     margin: 0;
     padding: 0;
 }
@@ -185,9 +169,7 @@ html, body
     background-color: var(--light-background-color);
     padding-top: 50px;
     padding-bottom: 60px;
-    -webkit-box-flex: 1;
-        -ms-flex-positive: 1;
-            flex-grow: 1;
+    flex-grow: 1;
 }
 
 .flat-box
@@ -236,12 +218,8 @@ html, body
 
 footer
 {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: space-evenly;
-        -ms-flex-pack: space-evenly;
-            justify-content: space-evenly;
+    justify-content: space-evenly;
     position: fixed;
     bottom: 0;
     right: 0;

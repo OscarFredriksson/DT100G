@@ -30,7 +30,7 @@
                 <li class="flat-box"> 
                     <p class="upper-text"> Har du följt guiden, eller skapat på egen hand? </p>
                     <hr>
-                    <p class="lower-text"> Har tagit inspiration från guiden och gjort en mapp för include-filer samt en för css-filer. </p>
+                    <p class="lower-text"> Delvis, ja. </p>
                 </li>
                 
                 <li class="flat-box"> 
