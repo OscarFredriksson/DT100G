@@ -6,6 +6,13 @@
     --tooltipbox-color: #333;
 }
 
+.login
+{
+    background-color: #777;
+    margin: 0;
+    padding-top: 50px;
+}
+
 .login ul
 {
     background-color: var(--light-background-color);
@@ -13,7 +20,6 @@
     width: 300px;
     height: 200px;
     margin: auto;
-    margin-top: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;    /*Horisontell center*/
@@ -146,7 +152,7 @@ html, body
     font-family: 'Open Sans';
     margin: 0;
     padding: 0;
-    background-color: #777;
+    background-color: var(--light-background-color);
     min-height: 100%;
     height: 100%;
 }
@@ -166,7 +172,6 @@ html, body
     list-style-type: none;
     margin: 0;
     padding: 0;
-    background-color: var(--light-background-color);
     padding-top: 50px;
     padding-bottom: 60px;
     flex-grow: 1;
