@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="sv">
-    
+<html lang="sv">  
     <?php 
         require 'requires/session.php';
         check_session();    //Kolla om användaren är inloggad, är användaren inloggad kollas timeout-tiden, efter 15 inaktiva minuter loggas användaren automatiskt ut
@@ -12,7 +11,7 @@
 
     <body>
         <?php 
-            include 'includes/header.php'; //Inkludera projektets <header> med titel och navigeringsknappar
+            include 'includes/header.php';      //Inkludera projektets <header> med titel och navigeringsknappar
         ?>    
 
         <ul class="box-list">   <!-- Lista för info-boxarna -->

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="sv">
-    
+<html lang="sv"> 
     <?php 
         require 'requires/session.php';
         check_session();    //Kolla om användaren är inloggad, är användaren inloggad kollas timeout-tiden, efter 15 inaktiva minuter loggas användaren automatiskt ut
@@ -56,6 +55,6 @@
         <?php 
             include 'includes/footer.php'; //Inkludera projektets <footer> 
         ?>
-    </body>
+     </body>
 
 </html>
