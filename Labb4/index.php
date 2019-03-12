@@ -57,9 +57,14 @@
         </div>
 
         <?php
-            if(!empty($_POST))
+            if(!empty($_POST) && !empty($_POST["name"]) && !empty($_POST["message"]))
             {
                 add_entry($_POST["name"], $_POST["message"]);
+                fill_list();
+                
+                //Undvik resubmit av formen
+                header("location: {$_SERVER['PHP_SELF']}");
+                exit;
             }
         
             include "includes/footer.php";
