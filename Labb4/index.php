@@ -3,6 +3,10 @@
 
     <?php
         require "require/process.php";
+
+        $path = $_SERVER['DOCUMENT_ROOT'].'/Labb4/require/'. 'data.txt';
+                        
+        $file = new File($path);
     ?>
 
     <head>
@@ -39,17 +43,13 @@
             
             <div class="right-column">
                 <ul class="box-list">   <!-- Lista för info-boxarna -->
-                    <li class="flat-box">   <!-- En info-box med en övre och en undre text -->
-                        <div class="upper-text">
-                            <p> Namn här</p>
-                            <p> 2019-03-10 </p>
-                        </div>
-                        <hr>    <!-- En delningslinje -->
-                        <p class="lower-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                    </li>
-
-                    <?php
-                        fill_list();
+                    <?php 
+                        $data = $file->get_all();
+                        
+                        foreach($data as $entry)
+                        {
+                            create_flat_box($entry[0], $entry[2], $entry[1]);
+                        }
                     ?>
                 </ul>
             </div>
@@ -57,14 +57,26 @@
         </div>
 
         <?php
-            if(!empty($_POST) && !empty($_POST["name"]) && !empty($_POST["message"]))
+            if(!empty($_POST))
             {
-                add_entry($_POST["name"], $_POST["message"]);
-                fill_list();
+                if(empty($_POST["name"]))
+                {
+                    echo '<script> alert("Du måste fylla i ett namn"); </script>';
+                }
+                else if(empty($_POST["message"]))
+                {
+                    echo '<script> alert("Du kan inte lämna ett tomt meddelande"); </script>';
+                }
+                else
+                {
+                    $file->add($_POST["name"], $_POST["message"]);
+                    
+                    //Undvik resubmit av formen
+                    header("location: {$_SERVER['PHP_SELF']}");
+                    exit;
+                }
                 
-                //Undvik resubmit av formen
-                header("location: {$_SERVER['PHP_SELF']}");
-                exit;
+                
             }
         
             include "includes/footer.php";

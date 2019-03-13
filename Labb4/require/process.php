@@ -1,48 +1,42 @@
 <?php
-
-
-    function add_entry($name, $message)
+    class File
     {
-        if(strlen($name) == 0)
+        private $file;
+        private $path;
+
+        public function __construct($path)
         {
-            echo '<script> alert("Du måste fylla i ett namn"); </script>';
-            return false;
+            $this->path = $path;
         }
-        else if(strlen($message) == 0)
-        {
-            echo '<script> alert("Du kan inte lämna ett tomt meddelande"); </script>';
-            return false;
-        }
-        else
+        
+
+        public function add($name, $message)
         {
             $data = array($name, $message, date("Y-m-d H:i:s"));
 
             $serializedData = serialize($data) . PHP_EOL;
 
-            $path = "/Applications/XAMPP/xamppfiles/htdocs/Labbar/Labb4/require/data.txt";
-
-            $file = fopen($path, 'a');
-            fwrite($file, $serializedData);
-            fclose($file);
-            return true;
+            $this->file = fopen($this->path, 'a');
+            fwrite($this->file, $serializedData);
+            fclose($this->file);
         }
-    }
 
-    function fill_list()
-    {
-        $path = "/Applications/XAMPP/xamppfiles/htdocs/Labbar/Labb4/require/data.txt";
-
-        $file = fopen($path, 'r');
-        while (!feof($file)) 
+        public function get_all()
         {
-            $data = fgets($file);
-            if(strlen($data) > 0)   
+            $returnArray = Array();
+            $this->file = fopen($this->path, 'r');
+            while (!feof($this->file)) 
             {
-                $data = unserialize($data);
-                create_flat_box($data[0], $data[2], $data[1]);
+                $data = fgets($this->file);
+                if(strlen($data) > 0)   
+                {
+                    $data = unserialize($data);
+                    array_push($returnArray, $data);
+                }
             }
+            return $returnArray;
+            fclose($this->file);
         }
-        fclose($file);
     }
 
     function create_flat_box($name, $date, $message)
@@ -54,6 +48,8 @@
         echo "</div>";
         echo "<hr>";
         echo "<p class='lower-text'>".$message."</p>";
+        echo "<hr>";
+        echo "<input class='button' type='button' value='Radera'>";
         echo "</li>";
     }
 
