@@ -2,6 +2,8 @@
 <html lang="sv"> 
 
     <?php
+        $part = "A";
+
         require "require/process.php";
 
         $path = $_SERVER['DOCUMENT_ROOT'].'/Labb4/require/'. 'data.txt';
