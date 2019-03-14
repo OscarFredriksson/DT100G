@@ -16,13 +16,17 @@
 
     if($website->getPart() == 1)
     {
-        $path = "require/data.txt";
+        $path = "data.txt";
                     
         $website->setDataLocation(new File($path));
     }
-    else
+    else if ($website->getPart() == 2)
     {
         $website->setDataLocation(new Database());
+    }
+    else
+    {
+        die("Error: no part set.");
     }
 
     if(!empty($_GET["delete"]))
