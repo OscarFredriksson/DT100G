@@ -10,5 +10,5 @@ document.getElementById("part2_btn").addEventListener("click", function()
 
 function buttonClicked(e)
 {
-    window.location.href = window.location.href + "&delete=" + e.id;
+    window.location.href += "&delete=" + e.id;
 }

@@ -23,25 +23,26 @@
 
         public function get_all()
         {
-            $returnArray = Array();
+            $allData = Array();
             $this->file = fopen($this->path, 'r');
             
-            $row = 1;
+            $rowNumber = 1;
             while (!feof($this->file)) 
             {
-                $data = fgets($this->file);
-                if(strlen($data) > 0)   
+                $row = fgets($this->file);
+                if(strlen($row) > 0)   
                 {
-                    $data = unserialize($data);
+                    $row = unserialize($row);
                     
-                    array_unshift($data, (string)$row);
+                    array_unshift($row, (string)$rowNumber);
 
-                    array_push($returnArray, $data);
+                    array_push($allData, $row);
                 }
-                $row++;
+                $rowNumber++;
             }
-            return $returnArray;
             fclose($this->file);
+
+            return $allData;
         }
 
         public function delete($id)
@@ -53,7 +54,7 @@
             
             $this->file = fopen($this->path, 'w+');
             
-            foreach($data as $line) 
+            foreach($data as $line) //Skriv tillbaks
             { 
                 fwrite($this->file, $line); 
             }

@@ -37,13 +37,13 @@
                 
             $result = $this->conn->query($query);
 
-            $returnArray = Array();
+            $allData = Array();
 
             while($row = $result->fetch_assoc())
             {
-                array_push($returnArray, Array($row["id"], $row["Username"], $row["Post"], $row["PostDate"]));    
+                array_push($allData, Array($row["id"], $row["username"], $row["post"], $row["postdate"]));    
             }
-            return $returnArray;
+            return $allData;
         }
 
         public function delete($id)

@@ -133,9 +133,9 @@
             }
             else
             {
-                $website->dataLocation->add($name, $message);
+                $this->dataLocation->add($name, $message);
                 
-                header("Location: index.php?part=" . $website->getPart());
+                header("Location: index.php?part=" . $this->getPart());
             }     
         }
 
