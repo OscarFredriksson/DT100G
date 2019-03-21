@@ -41,13 +41,14 @@ header
     font-weight: 100;
     font-size: 18px;
     font-family: var(--main-font);
+    text-decoration: none;
 }
 
 footer
 {
     position: fixed;
     background-color: var(--white-color);
-    height: 100px;
+    height: 75px;
     display: flex;
     align-items: center;
     width: 100%;
@@ -73,6 +74,7 @@ footer li
     font-family: var(--main-font);
     font-size: 12px;
 }
+
 
 .content
 {
@@ -105,7 +107,6 @@ footer li
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    /*background-color: yellow;*/
     padding: 0;
     margin: auto;
     margin-top: 10px;
@@ -128,5 +129,93 @@ footer li
     text-align: center;
 }
 
+.quiz-list
+{
+    margin-top: 100px;
+}
 
+            
+            /* ------------------ 
+                Quizbox Style 
+                ------------------ */
+
+.quizbox
+{
+    /*border-style: solid;*/
+    border-width: 1px; 
+    width: 250px;
+    background-color: var(--white-color);
+    padding: 0;
+}
+
+.quizbox .upper, .lower
+{
+    background-color: #DDD;
+    height: 40px;
+    padding: 0;
+}
+
+.quizbox .upper
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.quizbox p
+{
+    font-family: 'Roboto';
+    color: var(--dark-blue-color);
+    margin: 15px;
+}
+
+.quizbox .title
+{
+    text-transform: uppercase;
+}
+
+.quizbox .descr
+{
+    margin: 15px;
+}
+
+.quizbox .icon
+{
+    margin: 0;
+    margin-right: 5px;
+    padding: 2.5px;
+    cursor: default;
+    border-radius: 50%;
+}
+
+.quizbox .icon:hover
+{
+    background-color: #CCC;
+}
+
+.quizbox .lower
+{
+    height: 60px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.quizbox .play-btn
+{
+    border: none;
+    background-color: var(--accent-color);
+    font-family: var(--main-font);
+    text-transform: uppercase;
+
+    width: 100%;
+
+    border-radius: 5px;
+    margin: 12px;
+}
+
+.quizbox .play-btn
+{
+    cursor: pointer;
+}
 

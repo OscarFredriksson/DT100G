@@ -1,35 +1,29 @@
+<?php
+    require "requires/quiz.php";
+    require "requires/quizbox.php";
+
+    $website = new Quiz();
+    $box = new QuizBox(1);
+
+?>
+
 <!DOCTYPE html>
 <html lang="sv">
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Sniglet|Open+Sans">
-        
-        <title> Quiz </title>
-    </head>
+    <?php $website->placeHead(); ?>
 
     <body>
-        <?php include "includes/header.php"; ?>
+        <?php $website->placeHeader(); ?>
 
-        <div class="content">
-            <div class="question">
-                <h1> Frågan här... </h1>
-            </div>
+        <ul class="quiz-list">
 
-            <div class="alternatives">
-                <input class="alternative" value="Alternativ 1">
+            <?php 
+                $box->place();
+            ?>
+        </ul>
 
-                <input class="alternative" value="Alternativ 2">
-                
-                <input class="alternative" value="Alternativ 3">
-                
-                <input class="alternative" value="Alternativ 4">
-
-            </div>
-        <div>
-
-        <?php include "includes/footer.php"; ?>
+        <?php 
+            $website->placeFooter();
+            $website->importScript(); 
+        ?>
     </body>
-
-    <script src="js/main.js"></script>
 </html>
