@@ -2,27 +2,27 @@
     class QuizBox
     {
         private $quizID;
+        private $title;
+        private $descr;
 
-        function __construct($quizID)
+        function __construct($quizID, $title, $descr)
         {
             $this->quizID = $quizID;
+            $this->title = $title;
+            $this->descr = $descr;
         }
 
         function place()
         {
-            echo '<div class="quizbox">
-                    <div class="upper">
-                        <p class="title"> Quizets Titel </p>
-                        <i class="material-icons icon">more_vert</i>
-                    </div>
+            echo '<li><div class="quizbox"> <div class="upper">';
+            echo '<p class="title">' . $this->title . '</p>';
+            echo '<i class="material-icons icon">more_vert</i></div>';
 
-                    <p class="descr"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <p>
+            echo '<p class="descr">' . $this->descr . '</p>';
                     
-                    <div class="lower">
+            echo '  <div class="lower">
                         <input type="button" class="play-btn" value="spela" onclick="playButtonClicked(this)" id="' . $this->quizID . '">
-                    </div>
-                </div>';
+                    </div> </div></li>';
         }
     }
 ?>

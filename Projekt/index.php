@@ -1,10 +1,19 @@
 <?php
-    require "requires/quiz.php";
+    require "requires/website.php";
     require "requires/quizbox.php";
+    require "requires/database.php";
 
-    $website = new Quiz();
-    $box = new QuizBox(1);
+    $website = new Website();
 
+    $database = new Database();
+    
+    $quizzes = $database->get_all_quizzes();
+
+    $boxes = Array();
+    foreach($quizzes as $quiz)
+    {
+        $boxes[] = new QuizBox($quiz[0], $quiz[1], $quiz[2]);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -16,8 +25,10 @@
 
         <ul class="quiz-list">
 
-            <?php 
-                $box->place();
+            <li><i class="material-icons add-icon">add_circle_outline</i></li>
+
+            <?php
+                foreach($boxes as $box) $box->place();
             ?>
         </ul>
 

@@ -3,28 +3,31 @@
     {  
         function placeHead()
         {
-            echo '<head>
+            echo '<!DOCTYPE html><html lang="sv">
+                <head>
                     <meta charset="utf-8">
                     <link rel="stylesheet" type="text/css" href="css/style.css">
                     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Sniglet|Open+Sans">
                     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+                    <link rel="icon" href="icons/question_icon.png">
 
                     <title> Quiz </title>
-                </head>';
+                </head><body>';
         }
 
         function placeHeader()
         {
-            echo "<header>
+            echo "<div class='wrapper'> <header> 
     
-                    <a class='header-title' href='index.php'> Projekt - Quiz </a>
+                    <a class='header-title' href='index'> Projekt - Quiz </a>
 
-                </header>";
+                </header>
+                <div class='content'>";
         }
 
         function placeFooter()
         {
-            echo "<footer> <ul> 
+            echo "</div> <footer> <ul> 
                     <li>Oscar Fredriksson</li>
                     <li>osfr1701@student.miun.se</li>
                     <li id='lastModified'>Senast ändrad: ";
@@ -33,7 +36,11 @@
 
                     echo strftime("%e %B %Y %H:%M:%S", $this->get_last_modified()); 
                              
-            echo "</li> </ul> </footer>";
+            echo "</li> </ul> </footer></div>";
+            
+            $this->importScript(); 
+            
+            echo "</body></html>";
         }
 
         function importScript()
