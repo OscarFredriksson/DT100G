@@ -5,6 +5,10 @@
     --white-color: #F9FBFB;
     --accent-color: orange;
     
+    --button-hover: #e6e6e6;
+
+    --correct-color: #00e600;
+    --wrong-color: #ff0000;
     
     --main-font: 'Open Sans';
 }
@@ -247,4 +251,26 @@ footer li
     border-radius: 10px;
     text-align: center;
 }
-     
+
+.alternative:focus
+{
+    outline: 0;
+}
+
+.hover-highlight
+{
+    transition: filter 0.2s;
+}
+
+.hover-highlight:hover 
+{
+    filter: brightness(90%);
+}
+
+.alternative
+{
+    background: linear-gradient(to right, var(--correct-color) 50%, var(--white-color) 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: background .2s ease-out;
+}

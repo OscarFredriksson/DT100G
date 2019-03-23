@@ -1,6 +1,13 @@
 <?php
     class Website
     {  
+        private $location;
+
+        function __construct($location)
+        {
+            $this->location = $location;
+        }
+
         function placeHead()
         {
             echo '<!DOCTYPE html><html lang="sv">
@@ -22,7 +29,7 @@
                     <a class='header-title' href='index'> Projekt - Quiz </a>
 
                 </header>
-                <div class='content'>";
+                <div id='content' class='content'>";
         }
 
         function placeFooter()
@@ -36,7 +43,7 @@
 
                     echo strftime("%e %B %Y %H:%M:%S", $this->get_last_modified()); 
                              
-            echo "</li> </ul> </footer></div>";
+            echo "</li> </ul> </footer> </div>";
             
             $this->importScript(); 
             
@@ -45,7 +52,8 @@
 
         function importScript()
         {
-            echo '<script src="js/main.js"></script>';
+            echo'<script src="js/' . $this->location . '.js"></script>';
+
         }
 
         private function get_last_modified() 

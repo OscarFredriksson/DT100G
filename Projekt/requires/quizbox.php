@@ -21,7 +21,7 @@
             echo '<p class="descr">' . $this->descr . '</p>';
                     
             echo '  <div class="lower">
-                        <input type="button" class="play-btn" value="spela" onclick="playButtonClicked(this)" id="' . $this->quizID . '">
+                        <input type="button" class="play-btn hover-highlight" value="spela" onclick="playButtonClicked(this)" id="' . $this->quizID . '">
                     </div> </div></li>';
         }
     }

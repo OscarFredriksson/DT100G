@@ -1,5 +1,5 @@
 <?php
-    require "question.php";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/Projekt/requires/question.php";
 
     class Database
     {
