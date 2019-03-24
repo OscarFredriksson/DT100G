@@ -22,7 +22,4 @@
     $site->placeHeader();
 
     $site->placeFooter(); 
-?>
-
-
-    
+?>    

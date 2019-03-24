@@ -9,6 +9,8 @@
 
     --correct-color: #00e600;
     --wrong-color: #ff0000;
+
+    --clicked-answer-color: #000000;
     
     --main-font: 'Open Sans';
 }
@@ -269,7 +271,7 @@ footer li
 
 .alternative
 {
-    background: linear-gradient(to right, var(--correct-color) 50%, var(--white-color) 50%);
+    background: linear-gradient(to right, var(--clicked-answer-color) 50%, var(--white-color) 50%);
     background-size: 200% 100%;
     background-position: right bottom;
     transition: background .2s ease-out;
