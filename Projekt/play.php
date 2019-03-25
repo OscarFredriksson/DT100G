@@ -1,5 +1,5 @@
 <?php
-    require_once "requires/website.php";
+    require_once "requires/builder.php";
 
     session_start();
     session_unset();
@@ -15,11 +15,11 @@
         $_SESSION["QUIZ_ID"] = $_GET["id"];
     }
 
-    $site = new Website("quiz");
+    $builder = new Builder("quiz");
 
-    $site->placeHead();
+    $builder->placeHead();
 
-    $site->placeHeader();
+    $builder->placeHeader();
 
-    $site->placeFooter(); 
+    $builder->placeFooter(); 
 ?>    

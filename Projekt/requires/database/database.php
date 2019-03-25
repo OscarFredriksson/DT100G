@@ -7,6 +7,11 @@
 
         public function __construct()
         {
+            $this->connect();
+        }
+
+        public function connect()
+        {
             $this->conn = new mysqli('localhost', 'root', '', 'quiz', 3306);
             
             mysqli_set_charset($this->conn,"utf8"); //Fixa åäö
@@ -24,7 +29,7 @@
 
         public function get_all_quizzes()
         {
-            $query = "SELECT * FROM QUIZZES";
+            $query = "SELECT QUIZ_ID FROM QUIZZES";
                 
             $result = $this->conn->query($query);
 
@@ -32,9 +37,27 @@
 
             while($row = $result->fetch_assoc())
             {
-                array_push($allData, Array($row["QUIZ_ID"], $row["TITLE"], $row["DESCRIPTION"]));    
+                $allData[] = $row["QUIZ_ID"];
             }
             return $allData;
+        }
+
+        public function get_quiz_title($quiz_ID)
+        {
+            $query = "SELECT TITLE FROM QUIZZES WHERE QUIZ_ID=" . $quiz_ID . " LIMIT 1";
+
+            $result = $this->conn->query($query);
+
+            return $result->fetch_assoc()["TITLE"];
+        }
+
+        public function get_quiz_descr($quiz_ID)
+        {
+            $query = "SELECT DESCRIPTION FROM QUIZZES WHERE QUIZ_ID=" . $quiz_ID . " LIMIT 1";
+
+            $result = $this->conn->query($query);
+
+            return $result->fetch_assoc()["DESCRIPTION"];
         }
 
         public function get_all_questions($quiz_ID)
@@ -47,32 +70,65 @@
 
             while($row = $result->fetch_assoc())
             {
-                $question = new Question($row["TEXT"]);
+                //$question = new Question($row["TEXT"]);
 
-                $answers = $this->get_all_answers($row["QUESTION_ID"]);
+                //$alternatives = $this->get_all_alternatives($row["QUESTION_ID"]);
 
-                foreach($answers as $answer)
+                /*foreach($alternatives as $alternative)
                 {
-                    $question->addAnswer($answer);
-                }
+                    $question->addAlternative($alternative);
+                }*/
                 
-                $questions[] = $question;
+                $questions[] = $row["QUESTION_ID"];
             }
             return $questions;
         }
 
-        public function get_all_answers($question_ID)
+        public function get_question($question_ID)
         {
-            $query = "SELECT * FROM ANSWERS WHERE QUESTION_ID=" . $question_ID;
+            $query = "SELECT * FROM QUESTIONS WHERE QUESTION_ID=" . $question_ID;
 
             $result = $this->conn->query($query);
 
-            $answers = Array();
+            return $result->fetch_assoc()["TEXT"];
+        }
+
+        public function get_all_alternatives($question_ID)
+        {
+            $query = "SELECT * FROM ALTERNATIVES WHERE QUESTION_ID=" . $question_ID;
+
+            $result = $this->conn->query($query);
+
+            $alternatives = Array();
+
             while($row = $result->fetch_assoc())
             {
-                $answers[] = new Answer($row["TEXT"], $row["IS_CORRECT"]);    
+                $alternatives[] = $row["ALTERNATIVE_ID"];
             }
-            return $answers;
+            return $alternatives;
+        }
+
+        public function get_alternative_text($alternative_ID)
+        {
+            $query = "SELECT TEXT FROM ALTERNATIVES WHERE ALTERNATIVE_ID=" . $alternative_ID . " LIMIT 1";
+
+            $result = $this->conn->query($query);
+
+            return $result->fetch_assoc()["TEXT"];
+        }
+
+        public function check_answer($alternative_ID)
+        {
+            $query = "SELECT IS_CORRECT FROM ALTERNATIVES WHERE ALTERNATIVE_ID=" . $alternative_ID . " LIMIT 1";;
+
+            $result = $this->conn->query($query);
+
+            return $result->fetch_assoc()["IS_CORRECT"];
+        }
+
+        public function add_answer($alternative_ID)
+        {
+            
         }
     }
 

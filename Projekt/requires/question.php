@@ -1,38 +1,42 @@
 <?php
     class Question
     {
-        private $question;
-        private $answers = Array();
+        private $id;
+        private $text;
+        private $alternatives = Array();
 
-        function __construct($question)
+        function __construct($id, $text)
         {
-            $this->question = $question;
+            $this->id = $id;
+            $this->text = $text;
         }
 
-        function addAnswer($answer)
+        function addAlternative($alternative)
         {
-            $this->answers[] = $answer;
+            $this->alternatives[] = $alternative;
         }
 
         function getQuestion()
         {
-            return $this->question;
+            return $this->text;
         }
 
-        function getAnswers()
+        function getAlternatives()
         {
-            return $this->answers;
+            return $this->alternatives;
         }
 
     }
 
-    class Answer
+    class Alternative
     {
+        public $id;
         public $text;
         public $is_correct;
 
-        function __construct($text, $is_correct)
+        function __construct($id, $text, $is_correct)
         {
+            $this->id = $id;
             $this->text = $text;
             $this->is_correct = $is_correct;
         }

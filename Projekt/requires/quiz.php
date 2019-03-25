@@ -1,5 +1,5 @@
 <?php
-    require "database/database.php";
+    require_once "database/database.php";
 
     class Quiz
     {
@@ -7,15 +7,16 @@
         private $questions = Array();
         private $activeQuestion;
 
+        private $database;
+
         function __construct($id)
         {
-
-
             $this->id = $id;
             
-            $database = new Database();
+            $this->database = new Database();
 
-            $result = $database->get_all_questions($this->id);
+
+            $result = $this->database->get_all_questions($this->id);
             
             foreach($result as $question)
             {                
@@ -24,12 +25,19 @@
             $this->activeQuestion = 0;
         }
 
+        function reconnect_to_DB()
+        {
+            $this->database->connect();
+        }
+
         function placeQuestion()
         {
             echo '<div class="question"><h1>'; 
             
-            echo $this->questions[$this->activeQuestion]->getQuestion();
+            //echo $this->questions[$this->activeQuestion]->getQuestion();
             
+            echo $this->database->get_question($this->questions[$this->activeQuestion]);
+
             echo '</h1></div>';
 
             $this->placeAlternatives();
@@ -39,16 +47,15 @@
         {
             echo '<div class="alternatives">';
 
-            $answers = $this->questions[$this->activeQuestion]->getAnswers();
+            $alternatives = $this->database->get_all_alternatives($this->questions[$this->activeQuestion]);
 
-            foreach($answers as $answer)
+            foreach($alternatives as $alternative)
             {
                 echo '<input type="button" class="alternative hover-highlight" onClick="checkAnswer(this)"';
 
-                if($answer->is_correct) echo 'id="correct"';
-                else                    echo 'id="false"';
+                echo "id='" . $alternative . "'";
 
-                echo 'value="' . $answer->text . '">';
+                echo 'value="' . $this->database->get_alternative_text($alternative) . '">';
             }
 
             echo '</div>';
@@ -56,8 +63,13 @@
 
         function nextQuestion()
         {
-            $this->activeQuestion++;
-            return $this->activeQuestion;
+            $this->activeQuestion++;  
+        }
+
+        function isLastQuestion()
+        {
+            if($this->activeQuestion >= (sizeof($this->questions) - 1)) return true;
+            else                                                        return false;
         }
 
         function setQuestion($nr)
@@ -68,6 +80,15 @@
         function getCurrent()
         {
             return $this->activeQuestion;
+        }
+
+        function checkAnswer($alternative_ID)
+        {
+            $is_correct = $this->database->check_answer($alternative_ID);
+
+            //SPARA SPELARENS SVAR TILL DATABAS Å SÅNT HÄR
+
+            return $is_correct;
         }
     }
 
