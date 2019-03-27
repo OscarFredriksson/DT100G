@@ -38,6 +38,9 @@
             echo '</h1></div>';
 
             $this->placeAlternatives();
+
+            $current = $this->activeQuestion + 1;
+            echo '<progress class="bar" max="3" value="' . $current . '">';
         }
 
         function placeAlternatives()
@@ -55,7 +58,7 @@
                 echo 'value="' . $alternative->text . '">';
             }
 
-            echo '</div></form>';
+            echo '</div>';
         }
 
         function createResultPage()
