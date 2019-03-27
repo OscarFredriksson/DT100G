@@ -5,10 +5,14 @@
     --white-color: #F9FBFB;
     --accent-color: orange;
     
+    --icon-gray-color: #aaaaaa;
+
     --button-hover: #e6e6e6;
 
     --correct-color: #00e600;
     --wrong-color: #ff0000;
+
+    
 
     --clicked-answer-color: #000000;
     
@@ -213,13 +217,13 @@ footer li
 .question
 {
     padding: 0;
-    border-radius: 20px;
-    color: var(--white-color);
+    /*border-radius: 20px;
+    color: var(--white-color);*/
     display: flex;
     justify-content: center;
 }
 
-.question h1
+h1
 {
     text-transform: uppercase;
     font-size: 40px;
@@ -239,7 +243,7 @@ footer li
     width: 500px;
 }
 
-.alternative
+.button
 {
     background-color: var(--white-color);
     color: var(--dark-blue-color);
@@ -252,11 +256,22 @@ footer li
     width: 175px;
     border-radius: 10px;
     text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
-.alternative:focus
+.no-select-mark
+{
+    user-select: none;
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none;
+}
+
+.no-select-mark:focus
 {
     outline: 0;
+    
 }
 
 .hover-highlight
@@ -275,4 +290,113 @@ footer li
     background-size: 200% 100%;
     background-position: right bottom;
     transition: background .2s ease-out;
+}
+
+.result
+{
+    text-align: center;
+}
+
+.result .questions
+{
+    display: flex;
+    margin: auto;
+    width: 50%;
+    justify-content: center;
+}
+
+.result .button
+{
+    display: flex;
+    justify-content: center;
+}
+
+.result .icon
+{
+    margin-right: 10px;
+    margin-left: -10%;
+}
+
+.correct
+{
+    color: var(--correct-color);
+}
+
+.wrong
+{
+    color: var(--wrong-color);
+}
+
+.popup
+{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.popup .box
+{
+    background-color: var(--white-color);
+    border-radius: 15px;
+    margin: auto;
+    padding: 20px;
+    width: 50%;
+    font-family: var(--main-font);
+}
+
+.popup .content
+{
+    display: flex;
+    flex-direction: column;
+}
+
+/* The Close Button */
+.popup .close 
+{
+    float: right;
+    position: relative;
+    color: var(--icon-gray-color);
+    top: 0;
+    right: 0;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus 
+{
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.popup .question
+{
+    text-transform: uppercase;
+}
+
+.popup .answer
+{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.popup .icon
+{
+    margin-left: 10px;
+}
+
+.popup .row
+{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
 }

@@ -1,13 +1,13 @@
 <?php
     class Question
     {
-        private $id;
-        private $text;
+        public $text;
         private $alternatives = Array();
+        
+        private $answer;
 
-        function __construct($id, $text)
+        function __construct($text)
         {
-            $this->id = $id;
             $this->text = $text;
         }
 
@@ -23,20 +23,38 @@
 
         function getAlternatives()
         {
+            shuffle($this->alternatives);
             return $this->alternatives;
         }
 
+        function addAnswer($answer)
+        {
+            $this->answer = $answer;
+        }
+
+        function getAnswer()
+        {
+            return $this->answer;
+        }
+
+        function getCorrectAnswer()
+        {
+            foreach($this->alternatives as $alternative)
+            {
+                if($alternative->is_correct)    return $alternative;
+            }
+
+            die("Error: Korrupt Quiz - Hittade inget rätt svar.");
+        }
     }
 
     class Alternative
     {
-        public $id;
         public $text;
         public $is_correct;
 
-        function __construct($id, $text, $is_correct)
+        function __construct($text, $is_correct)
         {
-            $this->id = $id;
             $this->text = $text;
             $this->is_correct = $is_correct;
         }

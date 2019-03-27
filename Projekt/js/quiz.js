@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", loadQuiz, false);    //Körs när 
 
 function loadQuiz()
 {
+
     var xmlhttp = new XMLHttpRequest();
     
     xmlhttp.onreadystatechange = function() 
@@ -16,7 +17,7 @@ function loadQuiz()
 
     };
 
-    xmlhttp.open("GET", "requires/quizhandler.php?request=load+question", true);
+    xmlhttp.open("GET", "requires/quizhandler.php?request=load+question", false);
     xmlhttp.send();
 }
 
@@ -29,7 +30,7 @@ function nextQuestion()
 {
     var xmlhttp = new XMLHttpRequest();
 
-    xmlhttp.open("GET", "requires/quizhandler.php?request=next+question", true);
+    xmlhttp.open("GET", "requires/quizhandler.php?request=next+question", false);
     xmlhttp.send();
 }
 
@@ -54,35 +55,41 @@ function gotoNext()
 
     };
 
-    xmlhttp.open("GET", "requires/quizhandler.php?request=is+last+question", true);
+    xmlhttp.open("GET", "requires/quizhandler.php?request=is+last+question", false);
     xmlhttp.send();
 }
 
-function checkAnswer(obj)
+function disableButtons()
+{
+    var buttons = document.getElementsByClassName("alternative");
+    
+    for(let e of buttons)   e.disabled = true;
+}
+
+function addAnswer(text, is_correct)
 {
     var xmlhttp = new XMLHttpRequest();
 
-    xmlhttp.onreadystatechange = function() 
-    {
-        if (this.readyState != XMLHttpRequest.DONE) return;
-        
-        if(this.status == 200) 
-        {
-            var color;
-            if(this.responseText == 1)  color = getComputedStyle(document.documentElement).getPropertyValue('--correct-color');
-            else                        color = getComputedStyle(document.documentElement).getPropertyValue('--wrong-color');
-
-            document.documentElement.style.setProperty('--clicked-answer-color', color);
-
-            obj.style.backgroundPosition = "left bottom";
-
-        }
-        else printError(xmlhttp);
-
-    };
-
-    xmlhttp.open("GET", "requires/quizhandler.php?request=check+answer&answer_id=" + obj.id, true);
+    xmlhttp.open("GET", "requires/quizhandler.php?request=add+answer&text=" + text + "&is_correct=" + is_correct, false);
     xmlhttp.send();
+}
 
-    setTimeout(gotoNext, 1000);
+function checkAnswer(text, is_correct, obj)
+{
+    disableButtons();
+
+    var color;
+    if(is_correct == 1) color = getComputedStyle(document.documentElement).getPropertyValue('--correct-color');
+    else                color = getComputedStyle(document.documentElement).getPropertyValue('--wrong-color');
+
+    document.documentElement.style.setProperty('--clicked-answer-color', color);
+
+    obj.style.backgroundPosition = "left bottom";
+
+
+    setTimeout(function()
+    {
+        addAnswer(text, is_correct);
+        gotoNext();
+    }, 1000);
 }

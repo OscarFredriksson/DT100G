@@ -70,12 +70,12 @@
         {
             echo '<li><div class="quizbox"> <div class="upper">';
             echo '<p class="title">' . $title . '</p>';
-            echo '<i class="material-icons icon">more_vert</i></div>';
+            echo '<i class="material-icons icon no-select-mark">more_vert</i></div>';
 
             echo '<p class="descr">' . $descr . '</p>';
                     
             echo '  <div class="lower">
-                        <input type="button" class="play-btn hover-highlight" value="spela" onclick="playButtonClicked(this)" id="' . $id . '">
+                        <input type="button" class="play-btn hover-highlight no-select-mark" value="spela" onclick="playButtonClicked(this)" id="' . $id . '">
                     </div> </div></li>';
         }
     }

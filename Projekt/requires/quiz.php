@@ -15,7 +15,6 @@
             
             $this->database = new Database();
 
-
             $result = $this->database->get_all_questions($this->id);
             
             foreach($result as $question)
@@ -33,10 +32,8 @@
         function placeQuestion()
         {
             echo '<div class="question"><h1>'; 
-            
-            //echo $this->questions[$this->activeQuestion]->getQuestion();
-            
-            echo $this->database->get_question($this->questions[$this->activeQuestion]);
+                        
+            echo $this->questions[$this->activeQuestion]->getQuestion();
 
             echo '</h1></div>';
 
@@ -47,18 +44,47 @@
         {
             echo '<div class="alternatives">';
 
-            $alternatives = $this->database->get_all_alternatives($this->questions[$this->activeQuestion]);
+            $alternatives = $this->questions[$this->activeQuestion]->getAlternatives();
 
             foreach($alternatives as $alternative)
             {
-                echo '<input type="button" class="alternative hover-highlight" onClick="checkAnswer(this)"';
+                echo '<input type="button" class="button alternative hover-highlight no-select-mark" onClick="checkAnswer(' . "'" . $alternative->text . "'," . $alternative->is_correct . ',this)"';
 
-                echo "id='" . $alternative . "'";
+                echo "id='" . $alternative->is_correct . "'";
 
-                echo 'value="' . $this->database->get_alternative_text($alternative) . '">';
+                echo 'value="' . $alternative->text . '">';
             }
 
-            echo '</div>';
+            echo '</div></form>';
+        }
+
+        function createResultPage()
+        {
+            echo "<div class='result'><h1> Resultat </h1>";
+
+            echo "<div class='questions'>";
+
+            $i = 1;
+            foreach($this->questions as $question)
+            {
+                echo '<button class="button hover-highlight no-select-mark" 
+                        onClick="showAnswer(' . "'" . $question->text . "','" . $question->getAnswer()->text . "'";
+                        
+                if(!$question->getAnswer()->is_correct) echo ",'" . $question->getCorrectAnswer()->text . "'";
+                
+                echo ')">';
+                                
+                echo '<i class="material-icons icon';
+                
+                if($question->getAnswer()->is_correct)  echo ' correct"> check_circle';
+                else                                    echo ' wrong"> error';
+                
+                echo '</i>' . "Fråga " . $i . '</button>';
+
+                $i++;
+            }
+
+            echo "</div></div>";
         }
 
         function nextQuestion()
@@ -82,13 +108,14 @@
             return $this->activeQuestion;
         }
 
-        function checkAnswer($alternative_ID)
+        function getQuestions()
         {
-            $is_correct = $this->database->check_answer($alternative_ID);
+            return $this->questions;
+        }
 
-            //SPARA SPELARENS SVAR TILL DATABAS Å SÅNT HÄR
-
-            return $is_correct;
+        function addAnswer($text, $is_correct)
+        {
+            $this->questions[$this->activeQuestion]->addAnswer(new Alternative($text, $is_correct));
         }
     }
 

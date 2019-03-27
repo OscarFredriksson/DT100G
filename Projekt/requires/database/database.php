@@ -70,16 +70,16 @@
 
             while($row = $result->fetch_assoc())
             {
-                //$question = new Question($row["TEXT"]);
+                $question = new Question($row["TEXT"]);
 
-                //$alternatives = $this->get_all_alternatives($row["QUESTION_ID"]);
+                $alternatives = $this->get_all_alternatives($row["QUESTION_ID"]);
 
-                /*foreach($alternatives as $alternative)
+                foreach($alternatives as $alternative)
                 {
                     $question->addAlternative($alternative);
-                }*/
+                }
                 
-                $questions[] = $row["QUESTION_ID"];
+                $questions[] = $question;
             }
             return $questions;
         }
@@ -103,7 +103,7 @@
 
             while($row = $result->fetch_assoc())
             {
-                $alternatives[] = $row["ALTERNATIVE_ID"];
+                $alternatives[] = new Alternative($row["TEXT"], $row["IS_CORRECT"]);
             }
             return $alternatives;
         }
@@ -119,7 +119,9 @@
 
         public function check_answer($alternative_ID)
         {
-            $query = "SELECT IS_CORRECT FROM ALTERNATIVES WHERE ALTERNATIVE_ID=" . $alternative_ID . " LIMIT 1";;
+            $this->add_answer($alternative_ID);
+
+            $query = "SELECT IS_CORRECT FROM ALTERNATIVES WHERE ALTERNATIVE_ID=" . $alternative_ID . " LIMIT 1";
 
             $result = $this->conn->query($query);
 
@@ -128,7 +130,31 @@
 
         public function add_answer($alternative_ID)
         {
+            $query = "INSERT INTO ANSWERS (ALTERNATIVE_ID) VALUES (" . $alternative_ID . ")";
             
+            if (!$this->conn->query($query)) 
+            {
+                die("Error:" . $this->conn->error);
+            } 
+        }
+
+        public function clear_table($table)
+        {
+            $query = "TRUNCATE TABLE " . $table;
+            
+            if (!$this->conn->query($query)) 
+            {
+                die("Error:" . $this->conn->error);
+            } 
+        }
+
+        public function get_correct_answer($question_ID)
+        {
+            $query = "SELECT QUESTION_ID FROM QUESTIONS WHERE QUESTION_ID=" . $question_ID . "AND IS_CORRECT=1 LIMIT 1";
+
+            $result = $this->conn->query($query);
+
+            return $result->fetch_assoc()["QUESTION_ID"];
         }
     }
 

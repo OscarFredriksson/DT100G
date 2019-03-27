@@ -12,7 +12,7 @@
 
 <ul class="quiz-list">
 
-    <li><i class="material-icons add-icon">add_circle_outline</i></li>
+    <li><i class="material-icons add-icon no-select-mark">add_circle_outline</i></li>
         
     <?php 
     $database = new Database();

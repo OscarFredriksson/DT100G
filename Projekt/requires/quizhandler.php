@@ -25,6 +25,8 @@
                                         break;
             case "check answer":        echo $quiz->checkAnswer($_GET["answer_id"]);
                                         break;
+            case "add answer":          $quiz->addAnswer($_GET["text"], $_GET["is_correct"]); 
+                                        break;
         }
     }
     
