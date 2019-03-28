@@ -21,5 +21,7 @@
 
     $builder->placeHeader();
 
+    $builder->create_play_page();
+
     $builder->placeFooter(); 
 ?>    

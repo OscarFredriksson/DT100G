@@ -31,22 +31,11 @@
 
         function placeQuestion()
         {
-            echo '<div class="question"><h1>'; 
-                        
             echo $this->questions[$this->activeQuestion]->getQuestion();
-
-            echo '</h1></div>';
-
-            $this->placeAlternatives();
-
-            $current = $this->activeQuestion + 1;
-            echo '<progress class="bar" max="3" value="' . $current . '">';
         }
 
         function placeAlternatives()
         {
-            echo '<div class="alternatives">';
-
             $alternatives = $this->questions[$this->activeQuestion]->getAlternatives();
 
             foreach($alternatives as $alternative)
@@ -57,8 +46,6 @@
 
                 echo 'value="' . $alternative->text . '">';
             }
-
-            echo '</div>';
         }
 
         function createResultPage()
@@ -101,6 +88,11 @@
             else                                                        return false;
         }
 
+        function getNumberOfQuestions()
+        {
+            return sizeof($this->questions);
+        }
+
         function setQuestion($nr)
         {
             $this->activeQuestion = $nr;
@@ -119,6 +111,11 @@
         function addAnswer($text, $is_correct)
         {
             $this->questions[$this->activeQuestion]->addAnswer(new Alternative($text, $is_correct));
+        }
+
+        function getQuestionsLeft()
+        {
+            return sizeof($this->questions) - $this->activeQuestion;
         }
     }
 

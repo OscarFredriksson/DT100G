@@ -78,6 +78,32 @@
                         <input type="button" class="play-btn hover-highlight no-select-mark" value="spela" onclick="playButtonClicked(this)" id="' . $id . '">
                     </div> </div></li>';
         }
+
+        function create_result_box()
+        {
+            //(Fylls med hjälp av javascript)
+
+            echo '<div id="popup" class="popup">
+
+                <div class="box">
+                    <i class="material-icons close" id="close">close</i>
+                    <div class="content" id="popup-content">
+                    </div>
+                </div>
+
+            </div>';
+        }
+
+        function create_play_page()
+        {
+            echo '<div class="question"><h1 id="question-text"></h1>';
+            
+            echo '<div class="alternatives" id="alternatives"></div>';
+
+            echo '<div class="questions-left"> <p id="questions-left"></p> </div>';
+
+            echo '<progress id="progress-bar" class="bar" max="1" value="0"></div>';
+        }
     }
 
 ?>

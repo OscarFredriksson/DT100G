@@ -1,8 +1,9 @@
-document.addEventListener("DOMContentLoaded", loadQuiz, false);    //Körs när hemsidan öppnas
+document.addEventListener("DOMContentLoaded", initialize, false);    //Körs när hemsidan öppnas
 
-function loadQuiz()
+var bar = document.getElementById("progress-bar");
+
+function initialize()
 {
-
     var xmlhttp = new XMLHttpRequest();
     
     xmlhttp.onreadystatechange = function() 
@@ -11,13 +12,82 @@ function loadQuiz()
         
         if(this.status == 200) 
         {
-            document.getElementById("content").innerHTML = this.responseText;
+            bar.max = this.responseText;
+        }
+        else printError(xmlhttp);
+
+    };
+
+    xmlhttp.open("GET", "requires/quizhandler.php?request=get+nr+of+questions", false);
+    xmlhttp.send();
+
+    setQuestionsLeft();
+    loadQuestion();
+    loadAnswers();   
+}
+
+function setQuestionsLeft()
+{
+    var xmlhttp = new XMLHttpRequest();
+
+    var questionsLeft = document.getElementById("questions-left");
+
+    
+    xmlhttp.onreadystatechange = function() 
+    {
+        if (this.readyState != XMLHttpRequest.DONE) return;
+        
+        if(this.status == 200) 
+        {
+            questionsLeft.innerHTML = this.responseText + " frågor kvar";
+
+        }
+        else printError(xmlhttp);
+
+    };
+
+    xmlhttp.open("GET", "requires/quizhandler.php?request=get+questions+left", false);
+    xmlhttp.send();
+}
+
+function loadQuestion()
+{
+    var xmlhttp = new XMLHttpRequest();
+    
+    
+    xmlhttp.onreadystatechange = function() 
+    {
+        if (this.readyState != XMLHttpRequest.DONE) return;
+        
+        if(this.status == 200) 
+        {
+            document.getElementById("question-text").innerHTML = this.responseText;
         }
         else printError(xmlhttp);
 
     };
 
     xmlhttp.open("GET", "requires/quizhandler.php?request=load+question", false);
+    xmlhttp.send();
+}
+
+function loadAnswers()
+{
+    var xmlhttp = new XMLHttpRequest();
+    
+    xmlhttp.onreadystatechange = function() 
+    {
+        if (this.readyState != XMLHttpRequest.DONE) return;
+        
+        if(this.status == 200) 
+        {
+            document.getElementById("alternatives").innerHTML = this.responseText;
+        }
+        else printError(xmlhttp);
+
+    };
+
+    xmlhttp.open("GET", "requires/quizhandler.php?request=load+answers", false);
     xmlhttp.send();
 }
 
@@ -44,11 +114,25 @@ function gotoNext()
         
         if(this.status == 200) 
         {
-            if(this.responseText) window.location.href = "result";
+            bar.value++;
+
+            if(this.responseText) 
+            {
+                setQuestionsLeft();
+
+                setTimeout(function()
+                {
+                    window.location.href = "result";
+                }, 1000);
+            }
             else
             {
+
                 nextQuestion();
-                loadQuiz();
+                loadQuestion();
+                loadAnswers();
+                setQuestionsLeft();
+
             }
         }
         else printError(xmlhttp);

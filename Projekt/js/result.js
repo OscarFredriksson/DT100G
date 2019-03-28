@@ -12,7 +12,6 @@ function showAnswer(question, answer, correct_answer)
 
     content.innerHTML = '<h2 class="question">Fråga: ' + question + '</h2>';
 
-
     if(typeof correct_answer === 'undefined')
     {
         content.innerHTML += '<div class="row"><p class="answer"> Ditt svar: ' + answer + '</p><i class="material-icons icon correct">check_circle</i></div>';

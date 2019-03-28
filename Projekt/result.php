@@ -19,15 +19,7 @@
 
     $quiz->createResultPage();
 
-    echo '<div id="popup" class="popup">
-
-            <div class="box">
-                <i class="material-icons close" id="close">close</i>
-                <div class="content" id="popup-content">
-                </div>
-            </div>
-
-        </div>';
+    $builder->create_result_box();
 
     $builder->placeFooter();
 ?>
