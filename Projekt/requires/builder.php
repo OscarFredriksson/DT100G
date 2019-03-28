@@ -70,7 +70,7 @@
         {
             echo '<li><div class="quizbox"> <div class="upper">';
             echo '<p class="title">' . $title . '</p>';
-            echo '<i class="material-icons icon no-select-mark">more_vert</i></div>';
+            echo '<i class="material-icons icon no-select-mark" onclick="deleteQuiz(' . $id . ')">delete</i></div>';
 
             echo '<p class="descr">' . $descr . '</p>';
                     

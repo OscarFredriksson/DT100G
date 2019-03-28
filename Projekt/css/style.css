@@ -6,7 +6,7 @@
     --white-color: #FFFFFF; /*#F9FBFB;*/
     --accent-color: orange;
     
-    --icon-gray-color: #aaaaaa;
+    --icon-gray-color: #777777;
 
     --button-hover: #e6e6e6;
 
@@ -185,11 +185,13 @@ footer li
     padding: 2.5px;
     cursor: default;
     border-radius: 50%;
+    color: var(--icon-gray-color);
 }
 
 .quizbox .icon:hover
 {
     background-color: #CCC;
+    color: #555555;
 }
 
 .quizbox .lower

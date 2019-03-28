@@ -118,8 +118,6 @@ function gotoNext()
 
             if(this.responseText) 
             {
-                setQuestionsLeft();
-
                 setTimeout(function()
                 {
                     window.location.href = "result";
@@ -129,10 +127,9 @@ function gotoNext()
             {
 
                 nextQuestion();
+                setQuestionsLeft();
                 loadQuestion();
                 loadAnswers();
-                setQuestionsLeft();
-
             }
         }
         else printError(xmlhttp);
