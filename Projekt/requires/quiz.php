@@ -9,6 +9,8 @@
 
         private $database;
 
+        private $finished = false;
+
         function __construct($id)
         {
             $this->id = $id;
@@ -79,7 +81,15 @@
 
         function nextQuestion()
         {
-            $this->activeQuestion++;  
+            $this->activeQuestion++;
+            
+            if($this->activeQuestion >= sizeof($this->questions) - 1)
+                $this->finished = true;
+        }
+
+        function isFinished()
+        {
+            return $this->finished;
         }
 
         function isLastQuestion()

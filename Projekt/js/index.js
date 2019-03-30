@@ -7,3 +7,8 @@ function deleteQuiz(id)
 {
     if(confirm("Vill du verkligen ta bort quizzet?"))   alert("funkar inte än :(");
 }
+
+function newQuiz()
+{
+    window.location.href = "create";
+}

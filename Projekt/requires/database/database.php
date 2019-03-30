@@ -24,7 +24,7 @@
 
         public function __destruct()
         {
-            $this->conn->close();
+            if($this->conn)  $this->conn->close();
         }
 
         public function get_all_quizzes()

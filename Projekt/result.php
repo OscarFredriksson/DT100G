@@ -10,16 +10,18 @@
 
     $builder->placeHeader();
 
-    if(empty($_SESSION['quiz']))    Header("Location: index");
-    else                            
+    if(empty($_SESSION['quiz']) or !$_SESSION['quiz']->isFinished())    
+    {
+        Header("Location: index");
+    }
+    else                           
     {
         $quiz = $_SESSION['quiz'];
-        $quiz->reconnect_to_DB();
     }
 
     $quiz->createResultPage();
 
-    $builder->create_result_box();
+    $builder->create_result_popup_box();
 
     $builder->placeFooter();
 ?>

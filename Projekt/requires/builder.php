@@ -79,7 +79,7 @@
                     </div> </div></li>';
         }
 
-        function create_result_box()
+        function create_result_popup_box()
         {
             //(Fylls med hjälp av javascript)
 
@@ -103,6 +103,59 @@
             echo '<div class="questions-left"> <p id="questions-left"></p> </div>';
 
             echo '<progress id="progress-bar" class="bar" max="1" value="0"></div>';
+        }
+
+        function place_create_quiz_page()
+        {
+            echo '<h1 class="title">Skapa nytt quiz </h1>';
+
+            echo '<div class="create-quiz"><form method="post">';
+
+            echo '
+                        <div class="row">
+                            <label> Titel: </label>
+                            <input type="text" placeholder="Titel">
+                        </div>';
+
+            echo '
+                    <div class="row">
+                        <label> Beskrivning: </label>
+                        <textarea type="text" placeholder="Beskrivning" rows="2"></textarea>
+                    </div>
+                ';
+            
+            echo ' <hr> ';
+
+            echo '
+                    <ul class="questions" id="questions-list"> 
+                        <li>
+                            <h2> Fråga 1: </h2>
+                            <div class="row">
+                                <label> Fråga: </label>
+                                <input type="text" placeholder="Fråga">
+                            </div>
+                        </li>
+                        <li>
+                            <label> Alternativ: </label>
+                            <input class="alternative" type="text" placeholder="Alternativ 1">
+                            <input class="alternative" type="text" placeholder="Alternativ 2">
+                            <input class="alternative" type="text" placeholder="Alternativ 3">
+                            <input class="alternative" type="text" placeholder="Alternativ 4">
+                        </li>
+                    </ul>
+
+
+                    <button class="button add-question-btn" onclick="addQuestion()"> Lägg till en till fråga </button>
+                ';
+
+            echo ' <hr> ';
+
+            echo '<button type="submit" class="button"> Skapa Quiz </button></form></div>';
+        }
+
+        function build_new_question_form()
+        {
+
         }
     }
 

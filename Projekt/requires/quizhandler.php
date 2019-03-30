@@ -33,6 +33,7 @@
                                         break;
             case "get questions left":  echo $quiz->getQuestionsLeft();
                                         break;
+            case "is finished":         echo $quiz->isFinished();   
         }
     }
     
