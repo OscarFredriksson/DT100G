@@ -3,9 +3,12 @@
     {  
         private $location;
 
-        function __construct($location)
+        private $title;
+
+        function __construct($location, $title)
         {
             $this->location = $location;
+            $this->title = $title;
         }
 
         function placeHead()
@@ -24,12 +27,15 @@
 
         function placeHeader()
         {
-            echo "<div class='wrapper'> <header> 
+            echo '<div class="wrapper"> <header>';
     
-                    <a class='header-title' href='index'> Projekt - Quiz </a>
+            echo '<a class="header-title" href="index"> Projekt - Quiz </a>';
 
-                </header>
-                <div id='content' class='content'>";
+            echo '<p>' . $this->title . '</p>';
+
+            echo '<p> about </p>';
+
+            echo '</header><div id="content" class="content">';
         }
 
         function placeFooter()
@@ -70,28 +76,15 @@
         {
             echo '<li><div class="quizbox"> <div class="upper">';
             echo '<p class="title">' . $title . '</p>';
-            echo '<i class="material-icons icon no-select-mark" onclick="deleteQuiz(' . $id . ')">delete</i></div>';
+            echo '</div>';
 
             echo '<p class="descr">' . $descr . '</p>';
                     
-            echo '  <div class="lower">
-                        <input type="button" class="play-btn hover-highlight no-select-mark" value="spela" onclick="playButtonClicked(this)" id="' . $id . '">
-                    </div> </div></li>';
-        }
-
-        function create_result_popup_box()
-        {
-            //(Fylls med hjälp av javascript)
-
-            echo '<div id="popup" class="popup">
-
-                <div class="box">
-                    <i class="material-icons close" id="close">close</i>
-                    <div class="content" id="popup-content">
-                    </div>
-                </div>
-
-            </div>';
+            echo '<div class="lower">';
+            echo    '<button type="button" class="button play-btn" onclick="playButtonClicked(this)" id="' . $id . '">
+                        Spela
+                    </button>';
+            echo '</div> </div></li>';
         }
 
         function create_play_page()
@@ -99,63 +92,8 @@
             echo '<div class="question"><h1 id="question-text"></h1>';
             
             echo '<div class="alternatives" id="alternatives"></div>';
-
             echo '<div class="questions-left"> <p id="questions-left"></p> </div>';
-
             echo '<progress id="progress-bar" class="bar" max="1" value="0"></div>';
-        }
-
-        function place_create_quiz_page()
-        {
-            echo '<h1 class="title">Skapa nytt quiz </h1>';
-
-            echo '<div class="create-quiz"><form method="post">';
-
-            echo '
-                        <div class="row">
-                            <label> Titel: </label>
-                            <input type="text" placeholder="Titel">
-                        </div>';
-
-            echo '
-                    <div class="row">
-                        <label> Beskrivning: </label>
-                        <textarea type="text" placeholder="Beskrivning" rows="2"></textarea>
-                    </div>
-                ';
-            
-            echo ' <hr> ';
-
-            echo '
-                    <ul class="questions" id="questions-list"> 
-                        <li>
-                            <h2> Fråga 1: </h2>
-                            <div class="row">
-                                <label> Fråga: </label>
-                                <input type="text" placeholder="Fråga">
-                            </div>
-                        </li>
-                        <li>
-                            <label> Alternativ: </label>
-                            <input class="alternative" type="text" placeholder="Alternativ 1">
-                            <input class="alternative" type="text" placeholder="Alternativ 2">
-                            <input class="alternative" type="text" placeholder="Alternativ 3">
-                            <input class="alternative" type="text" placeholder="Alternativ 4">
-                        </li>
-                    </ul>
-
-
-                    <button class="button add-question-btn" onclick="addQuestion()"> Lägg till en till fråga </button>
-                ';
-
-            echo ' <hr> ';
-
-            echo '<button type="submit" class="button"> Skapa Quiz </button></form></div>';
-        }
-
-        function build_new_question_form()
-        {
-
         }
     }
 

@@ -41,6 +41,7 @@ header
 {
     margin: 0;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     background-color: var(--white-color);
     height: 100px;
@@ -48,7 +49,7 @@ header
     font-family: 'Roboto';
 }
 
-.header-title
+header a, header p
 {
     margin: 0;
     padding: 0;
@@ -114,7 +115,7 @@ footer li
 {
     padding: 0;
     margin: 0;
-    margin-left: 40%;
+    /*margin-left: 40%;*/
     display: flex;
     list-style-type: none;
     justify-content: flex-start;
@@ -140,7 +141,6 @@ footer li
 
 .quizbox
 {
-    /*border-style: solid;*/
     border-width: 1px; 
     width: 250px;
     height: 300px;
@@ -149,6 +149,9 @@ footer li
     margin: 20px;
     display: flex;
     flex-direction: column;
+    text-align: left;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .quizbox .upper, .lower
@@ -160,9 +163,8 @@ footer li
 
 .quizbox .upper
 {
-    display: flex;
+    display: flex;  /*Centrera titeltexten */
     align-items: center;
-    justify-content: space-between;
 }
 
 .quizbox p
@@ -211,6 +213,7 @@ footer li
 {
     border: none;
     background-color: var(--accent-color);
+    color: black;
     font-family: var(--main-font);
     text-transform: uppercase;
 
@@ -219,7 +222,12 @@ footer li
     border-radius: 5px;
     margin: 12px;
 
+    padding: 0;
+    font-size: 12px;
+
     cursor: pointer;
+
+    box-shadow: none;
 }
 
 .question
@@ -454,89 +462,6 @@ h1
     margin: 0;
     color: var(--white-color);
     border-radius: 6px;
-}
-
-label, h2
-{
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 22px;
-    color: var(--white-color);
-    margin: 0;
-    padding: 4px;
-    text-decoration: none;
-}
-
-h2
-{
-    font-size: 25px;
-    margin-bottom: 10px;
-}
-
-.create-quiz
-{
-    margin: auto;
-    width: 60%;
-    padding: 0;
-}
-
-.create-quiz ul
-{
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.create-quiz li
-{
-    margin: 20px;
-    padding: 0;
-    font-size: 14px;
-    
-}
-
-.create-quiz .row
-{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 20px;
-}
-
-.create-quiz input, textarea
-{
-    font-family: var(--main-font);
-    width: 60%;
-
-    border-radius: 5px;
-    border: none;
-    padding: 12px;
-}
-
-.create-quiz hr
-{
-    width: 95%;
-    border: 1px solid var(--white-color);
-    margin: 40px;
-}
-
-.create-quiz button
-{
-    margin: auto;
-}
-
-.create-quiz .alternative
-{
-    width: 100px;
-}
-
-.create-quiz .add-question-btn
-{
-    margin: 0;
-    margin-top: 20px;
-    font-size: 12px;
-    padding: 5px;
-    width: 175px;
 }
 
 @media screen and (max-width: 1000px)

@@ -31,6 +31,11 @@
             $this->database->connect();
         }
 
+        function getTitle()
+        {
+            $this->database->get_quiz_title($this->id);
+        }
+
         function placeQuestion()
         {
             echo $this->questions[$this->activeQuestion]->getQuestion();
@@ -57,6 +62,7 @@
             echo "<div class='questions'>";
 
             $i = 1;
+
             foreach($this->questions as $question)
             {
                 echo '<button class="button hover-highlight no-select-mark" 
