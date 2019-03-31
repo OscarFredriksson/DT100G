@@ -3,9 +3,6 @@
     require_once "requires/database/database.php";
 
     session_start();
-    session_unset();
-    session_destroy();
-    session_start();
 
     if(empty($_GET["id"]))
     {
@@ -16,6 +13,8 @@
         $_SESSION["QUIZ_ID"] = $_GET["id"];
 
         $database = new Database();
+
+        if(!$database->quiz_exists($_SESSION["QUIZ_ID"]))   header("Location: index");  
     }
 
     $builder = new Builder("quiz", $database->get_quiz_title( $_SESSION["QUIZ_ID"]));

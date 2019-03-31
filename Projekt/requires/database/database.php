@@ -24,29 +24,51 @@
 
         public function __destruct()
         {
-            //if($this->conn)  $this->conn->close();
+            /*if($this->conn)  $this->conn->close();*/
+        }
+
+        private function sendQuery($query)
+        {                
+            if(!$result = $this->conn->query($query))
+            {
+                die("Error:" . $this->conn->error);
+            }
+            else
+            {
+                return $result;
+            }
+        }
+
+        public function quiz_exists($quiz_ID)
+        {
+            $query = "SELECT 1 FROM QUIZZES WHERE QUIZ_ID = " . $quiz_ID;
+                
+            $result = $this->sendQuery($query);
+
+            if(mysqli_num_rows($result) == 0)   return false;
+            else                                return true;
         }
 
         public function get_all_quizzes()
         {
             $query = "SELECT QUIZ_ID FROM QUIZZES";
                 
-            $result = $this->conn->query($query);
+            !$result = $this->sendQuery($query);
 
-            $allData = Array();
+            $quizzes = Array();
 
             while($row = $result->fetch_assoc())
             {
-                $allData[] = $row["QUIZ_ID"];
+                $quizzes[] = $row["QUIZ_ID"];
             }
-            return $allData;
+            return $quizzes;
         }
 
         public function get_quiz_title($quiz_ID)
         {
             $query = "SELECT TITLE FROM QUIZZES WHERE QUIZ_ID=" . $quiz_ID . " LIMIT 1";
 
-            $result = $this->conn->query($query);
+            $result = $this->sendQuery($query);
 
             return $result->fetch_assoc()["TITLE"];
         }
@@ -55,7 +77,7 @@
         {
             $query = "SELECT DESCRIPTION FROM QUIZZES WHERE QUIZ_ID=" . $quiz_ID . " LIMIT 1";
 
-            $result = $this->conn->query($query);
+            $result = $this->sendQuery($query);
 
             return $result->fetch_assoc()["DESCRIPTION"];
         }
@@ -64,7 +86,7 @@
         {
             $query = "SELECT * FROM QUESTIONS WHERE QUIZ_ID=" . $quiz_ID;
 
-            $result = $this->conn->query($query);
+            $result = $this->sendQuery($query);
 
             $questions = Array();
 
@@ -88,7 +110,7 @@
         {
             $query = "SELECT * FROM QUESTIONS WHERE QUESTION_ID=" . $question_ID;
 
-            $result = $this->conn->query($query);
+            $result = $this->sendQuery($query);
 
             return $result->fetch_assoc()["TEXT"];
         }
@@ -97,7 +119,7 @@
         {
             $query = "SELECT * FROM ALTERNATIVES WHERE QUESTION_ID=" . $question_ID;
 
-            $result = $this->conn->query($query);
+            $result = $this->sendQuery($query);
 
             $alternatives = Array();
 
@@ -112,7 +134,7 @@
         {
             $query = "SELECT TEXT FROM ALTERNATIVES WHERE ALTERNATIVE_ID=" . $alternative_ID . " LIMIT 1";
 
-            $result = $this->conn->query($query);
+            $result = $this->sendQuery($query);
 
             return $result->fetch_assoc()["TEXT"];
         }
@@ -123,7 +145,7 @@
 
             $query = "SELECT IS_CORRECT FROM ALTERNATIVES WHERE ALTERNATIVE_ID=" . $alternative_ID . " LIMIT 1";
 
-            $result = $this->conn->query($query);
+            $result = $this->sendQuery($query);
 
             return $result->fetch_assoc()["IS_CORRECT"];
         }
@@ -132,27 +154,14 @@
         {
             $query = "INSERT INTO ANSWERS (ALTERNATIVE_ID) VALUES (" . $alternative_ID . ")";
             
-            if (!$this->conn->query($query)) 
-            {
-                die("Error:" . $this->conn->error);
-            } 
-        }
-
-        public function clear_table($table)
-        {
-            $query = "TRUNCATE TABLE " . $table;
-            
-            if (!$this->conn->query($query)) 
-            {
-                die("Error:" . $this->conn->error);
-            } 
+            $this->sendQuery($query);
         }
 
         public function get_correct_answer($question_ID)
         {
             $query = "SELECT QUESTION_ID FROM QUESTIONS WHERE QUESTION_ID=" . $question_ID . "AND IS_CORRECT=1 LIMIT 1";
 
-            $result = $this->conn->query($query);
+            $result = $this->sendQuery($query);
 
             return $result->fetch_assoc()["QUESTION_ID"];
         }

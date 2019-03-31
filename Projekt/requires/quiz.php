@@ -3,7 +3,7 @@
 
     class Quiz
     {
-        private $id;
+        public $id;
         private $questions = Array();
         private $activeQuestion;
 
@@ -33,7 +33,7 @@
 
         function getTitle()
         {
-            $this->database->get_quiz_title($this->id);
+            return $this->database->get_quiz_title($this->id);
         }
 
         function placeQuestion()
@@ -55,12 +55,8 @@
             }
         }
 
-        function createResultPage()
+        function placeResultBoxes()
         {
-            echo "<div class='result'><h1> Resultat </h1>";
-
-            echo "<div class='questions'>";
-
             $i = 1;
 
             foreach($this->questions as $question)
@@ -81,15 +77,13 @@
 
                 $i++;
             }
-
-            echo "</div></div>";
         }
 
         function nextQuestion()
         {
             $this->activeQuestion++;
             
-            if($this->activeQuestion >= sizeof($this->questions) - 1)
+            if($this->activeQuestion > (sizeof($this->questions) - 1))
                 $this->finished = true;
         }
 

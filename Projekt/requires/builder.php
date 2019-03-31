@@ -2,10 +2,9 @@
     class Builder
     {  
         private $location;
-
         private $title;
 
-        function __construct($location, $title)
+        function __construct($location, $title = "")
         {
             $this->location = $location;
             $this->title = $title;
@@ -27,20 +26,57 @@
 
         function placeHeader()
         {
-            echo '<div class="wrapper"> <header>';
-    
-            echo '<a class="header-title" href="index"> Projekt - Quiz </a>';
+            echo '<div class="wrapper">';
+            echo '<header><ul>';
 
-            echo '<p>' . $this->title . '</p>';
+            echo '<li ';
+            if($this->location == "index") echo 'class="active"';
+            echo '><a href="index"> Quizspel </a></li>';
+            
+            echo '<li ';
+            if($this->location == "quiz") echo 'class="active"';
+            echo '><p>' . $this->title . '</p></li>';
+            
+            echo '<li ';
+            if($this->location == "about") echo 'class="active"';
+            echo '><a href="about"> om sidan </a></li>';
 
-            echo '<p> about </p>';
+            echo '</ul></header>';
+        }
 
-            echo '</header><div id="content" class="content">';
+        function placePageStart()
+        {
+            switch($this->location)
+            {
+                case "index":   echo '<div id="content" class="content">';
+                                echo '<h1> Välj ett quiz att spela: </h1>';
+                                echo '<ul class="quiz-list">'; 
+                                break;
+                case "result":  echo '<div id="content" class="content result">';
+                                echo '<h1> Resultat </h1>';
+                                echo '<div class="questions">';
+                                break;
+                case "about":   
+            }
+        }
+
+        function placePageEnd()
+        {
+            switch($this->location)
+            {
+                case "index":   echo '</ul> </div>';
+                                break;
+                case "result":  echo '</div>';
+                                echo '<a href="index" class="button">Avsluta</a>';
+                                echo '</div>';
+                                break;
+            }
+
         }
 
         function placeFooter()
         {
-            echo "</div> <footer> <ul> 
+            echo "<footer> <ul> 
                     <li>Oscar Fredriksson</li>
                     <li>osfr1701@student.miun.se</li>
                     <li id='lastModified'>Senast ändrad: ";
@@ -95,6 +131,19 @@
             echo '<div class="questions-left"> <p id="questions-left"></p> </div>';
             echo '<progress id="progress-bar" class="bar" max="1" value="0"></div>';
         }
+
+        function create_result_popup_box()
+        {
+            //(Fylls med hjälp av javascript)
+            echo '<div id="popup" class="popup">
+                    <div class="box">
+                        <i class="material-icons close" id="close">close</i>
+                        <div class="popup-content" id="popup-content">
+                        </div>
+                    </div>
+                </div>';
+        }
+        
     }
 
 ?>

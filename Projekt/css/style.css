@@ -27,6 +27,8 @@ html, body
     padding: 0;
     margin: 0;
     height: 100%;
+
+    overflow-y: auto;
 }
 .wrapper
 {
@@ -40,27 +42,53 @@ html, body
 header
 {
     margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    background-color: var(--white-color);
+    height: 75px;
+    width: 100%;
+    font-family: 'Roboto';
+}
+
+header ul
+{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--white-color);
-    height: 100px;
+    list-style-type: none;
     width: 100%;
-    font-family: 'Roboto';
+    margin: 0;
+    padding: 0;
+}
+
+header li
+{
+    height: 75px;
+    margin: 10px;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
 }
 
 header a, header p
 {
     margin: 0;
-    padding: 0;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 40px;
+    padding-right: 40px;
     text-transform: uppercase;
     color: var(--dark-blue-color);
     font-weight: 100;
     font-size: 18px;
     font-family: var(--main-font);
     text-decoration: none;
+}
+
+header .active
+{
+    border-bottom: solid;
+    border-color: var(--accent-color);
 }
 
 footer
@@ -275,17 +303,7 @@ h1
     border-radius: 10px;
     text-align: center;
     box-shadow: var(--box-shadow);
-
-    user-select: none;
-    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
-    -moz-user-select: none; /* mozilla browsers */
-    -khtml-user-select: none; /* webkit (konqueror) browsers */
-    -ms-user-select: none;
-}
-
-.button:focus
-{
-    outline: 0;   
+    text-decoration: none;
 }
 
 .button
@@ -306,23 +324,13 @@ h1
     transition: background .2s ease-out;
 }
 
-.result
-{
-    text-align: center;
-}
-
-.result h1
-{
-    text-transform: uppercase;
-    color: var(--white-color);
-
-}
-
 .result .questions
 {
     display: flex;
     flex-wrap: wrap;
     margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
     width: 50%;
     justify-content: center;
 }
@@ -331,6 +339,13 @@ h1
 {
     display: flex;
     justify-content: center;
+}
+
+.result a
+{
+    margin: auto;
+    background-color: var(--accent-color);
+    color: var(--white-color);
 }
 
 .result .icon
@@ -374,7 +389,7 @@ h1
     font-family: var(--main-font);
 }
 
-.popup .content
+.popup-content
 {
     display: flex;
     flex-direction: column;

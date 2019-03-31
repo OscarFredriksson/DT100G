@@ -11,6 +11,8 @@
     {
         $quiz = $_SESSION['quiz'];
         $quiz->reconnect_to_DB();
+    
+        /*if($quiz->isFinished()) Header("Location: result");*/
     }
 
     if(!empty($_REQUEST["request"]))
