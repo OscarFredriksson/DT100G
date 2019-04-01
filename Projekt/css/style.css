@@ -1,9 +1,12 @@
 :root
 {
-    --light-blue-color: #30c9e8;
-    --middle-blue-color: #107896;
+    --light-blue-color: #2E9CCA; /*#30c9e8*/;
     --dark-blue-color: #3A4A4D;
-    --white-color: #FFFFFF; /*#F9FBFB;*/
+    --light-section-color: #FFFFFF;
+
+    --light-text-color: #FEFFFF;
+    --dark-text-color: #15252A;
+    --white-color: #FEFFFF; /*#F9FBFB;*/
     --accent-color: orange;
     
     --icon-gray-color: #777777;
@@ -23,21 +26,58 @@
 html, body
 {
     font-family: var(--main-font);
-    background-color: var(--light-blue-color);
     padding: 0;
     margin: 0;
     height: 100%;
-
-    overflow-y: auto;
 }
+
+h1 
+{
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 2.5em;
+    color: var(--light-text-color); 
+}
+
+.button
+{
+    background-color: var(--light-section-color);
+    color: var(--dark-text-color);
+    text-transform: uppercase;
+    font-family: var(--main-font);
+    font-size: 1.25em;
+    border: none;
+    padding: 1em;
+    margin: 0.5em;
+    display: inline-block;
+    min-width: 175px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    text-decoration: none;
+
+    transition: filter 0.2s;
+}
+
+.button:hover 
+{
+    filter: brightness(90%);
+}
+
 .wrapper
 {
-    width: 100%;
-    height: 100%;
+    background-color: var(--light-blue-color);
+
+    min-height: 100vh;  /*Fyll alltid hela skärmen så footern hamnar längst ner*/
+
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
+
+
+/* ------------------ 
+        Header 
+    ------------------ */
 
 header
 {
@@ -45,7 +85,7 @@ header
     padding: 0;
     display: flex;
     align-items: center;
-    background-color: var(--white-color);
+    background-color: var(--light-section-color);
     height: 75px;
     width: 100%;
     font-family: 'Roboto';
@@ -78,9 +118,9 @@ header a, header p
     padding-left: 40px;
     padding-right: 40px;
     text-transform: uppercase;
-    color: var(--dark-blue-color);
+    color: var(--dark-text-color);
     font-weight: 100;
-    font-size: 18px;
+    font-size: 1.15em;
     font-family: var(--main-font);
     text-decoration: none;
 }
@@ -91,15 +131,24 @@ header .active
     border-color: var(--accent-color);
 }
 
+
+/* ------------------ 
+        Footer 
+    ------------------ */
+
 footer
 {
+    height: 50px;
+    line-height: 50px;
     margin: 0;
     padding: 0;
-    background-color: var(--white-color);
-    max-height: 75px;
-    display: inline-flex;
-    align-items: center;
-    width: 100%;
+    background-color: var(--light-text-color);
+}
+
+footer a, footer p
+{
+    text-decoration: none;
+    color: var(--dark-text-color);
 }
 
 footer ul
@@ -108,25 +157,26 @@ footer ul
     margin: 0;
     padding: 0;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-around;
     list-style-type: none;
+
 }
     
 footer li
 {
-    padding: 30px;
-    color: var(--dark-blue-color);
+    color: var(--dark-text-color);
     font-family: var(--main-font);
-    font-size: 12px;
+    font-size: 0.75em;
 }
 
 .content
 {
+    flex-grow: 1;
+
     margin: 0;
     padding: 0;
-    margin-bottom: 5%;
-    min-height: 400px;
+    padding-top: 50px;
+    padding-bottom: 50px;
 
     width: 100%;
     overflow-x: auto;
@@ -134,45 +184,28 @@ footer li
     text-align: center;
 }
 
-.content::-webkit-scrollbar
-{
-    display: none;
-}
-
-.quiz-list
+.quiz-list  /*Lista med quiz-boxar på startsidan */
 {
     padding: 0;
     margin: 0;
-    /*margin-left: 40%;*/
+    margin-top: 40px;
     display: flex;
     list-style-type: none;
     justify-content: flex-start;
     align-items: center;
 }
-
-.quiz-list .add-icon
-{
-    font-size: 100px;
-    color: var(--white-color);
-    cursor: default;
-    margin: 50px;
-}
-
-.quiz-list .add-icon:hover
-{
-    color: gray;
-}
        
-            /* ------------------ 
-                Quizbox Style 
-                ------------------ */
+           
+/* ------------------ 
+        Quizbox
+    ------------------ */
 
 .quizbox
 {
     border-width: 1px; 
     width: 250px;
     height: 300px;
-    background-color: var(--white-color);
+    background-color: var(--light-section-color);
     padding: 0;
     margin: 20px;
     display: flex;
@@ -198,7 +231,7 @@ footer li
 .quizbox p
 {
     font-family: 'Roboto';
-    color: var(--dark-blue-color);
+    color: var(--dark-text-color);
     margin: 15px;
 }
 
@@ -251,14 +284,18 @@ footer li
     margin: 12px;
 
     padding: 0;
-    font-size: 12px;
+    font-size: 0.75em;
 
     cursor: pointer;
 
     box-shadow: none;
 }
 
-.question
+/* ------------------ 
+        Quiz-sidan
+    ------------------ */
+
+.question   /*Wrapper för en fråga */
 {
     margin: auto;
     padding: 30px;
@@ -267,15 +304,6 @@ footer li
     justify-content: center;
     align-items: center;
     text-align: center;
-    /*background-color: var(--middle-blue-color);*/
-}
-
-h1 
-{
-    margin: 0;
-    text-transform: uppercase;
-    font-size: 40px;
-    color: var(--white-color); 
 }
 
 .alternatives
@@ -289,40 +317,68 @@ h1
     width: 500px;
 }
 
-.button
+.correct
 {
-    background-color: var(--white-color);
-    color: var(--dark-blue-color);
-    text-transform: uppercase;
-    font-family: var(--main-font);
-    font-size: 18px;
-    border: none;
-    padding: 15px;
-    margin: 10px;
-    width: 175px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: var(--box-shadow);
-    text-decoration: none;
+    color: var(--correct-color);
 }
 
-.button
+.wrong
 {
-    transition: filter 0.2s;
-}
-
-.button:hover 
-{
-    filter: brightness(90%);
+    color: var(--wrong-color);
 }
 
 .alternative
 {
-    background: linear-gradient(to right, var(--clicked-answer-color) 50%, var(--white-color) 50%);
+    background: linear-gradient(to right, var(--clicked-answer-color) 50%, var(--light-section-color) 50%);
     background-size: 200% 100%;
     background-position: right bottom;
     transition: background .2s ease-out;
 }
+
+.bar
+{
+    width: 300px;
+    height: 20px;
+    border-radius: 5px;
+}
+
+.bar::-webkit-progress-bar
+{
+    background-color: var(--light-section-color);
+    border-radius: 5px;
+    height: 12px;
+    box-shadow: var(--box-shadow);
+}
+
+.bar::-webkit-progress-value
+{
+    background-color: var(--accent-color);
+    border-radius: 6px;
+    transition: width 1s ease-in-out;
+}
+
+.questions-left
+{
+    margin-top: 30px;
+    padding: 0;
+    text-align: center;
+    
+}
+
+.questions-left p
+{
+    text-transform: uppercase;
+    font-size: 1em;
+    font-family: var(--main-font);
+    padding: 5px;
+    margin: 0;
+    color: var(--light-text-color);
+    border-radius: 6px;
+}
+
+/* ------------------ 
+        Resultat-sidan
+    ------------------ */
 
 .result .questions
 {
@@ -345,23 +401,13 @@ h1
 {
     margin: auto;
     background-color: var(--accent-color);
-    color: var(--white-color);
+    color: var(--light-text-color);
 }
 
 .result .icon
 {
     margin-right: 10px;
     margin-left: -10%;
-}
-
-.correct
-{
-    color: var(--correct-color);
-}
-
-.wrong
-{
-    color: var(--wrong-color);
 }
 
 .popup
@@ -381,7 +427,7 @@ h1
 /* Modal Content */
 .popup .box
 {
-    background-color: var(--white-color);
+    background-color: var(--light-section-color);
     border-radius: 15px;
     margin: auto;
     padding: 20px;
@@ -403,7 +449,7 @@ h1
     color: var(--icon-gray-color);
     top: 0;
     right: 0;
-    font-size: 28px;
+    font-size: 2em;
     font-weight: bold;
 }
 
@@ -438,68 +484,57 @@ h1
     align-items: center;
 }
 
-.bar
+.about
 {
-    width: 300px;
-    height: 20px;
-    border-radius: 5px;
-}
+    text-align: left;
+    margin: auto;
+    padding: 40px;
+    width: 50%;
+    border-radius: 10px;
 
-.bar::-webkit-progress-bar
-{
-    background-color: var(--white-color);
-    border-radius: 5px;
-    height: 12px;
+    background-color: var(--light-section-color);
+
+    list-style-type: none;
+
+    font-family: var(--main-font);
+
     box-shadow: var(--box-shadow);
 }
 
-.bar::-webkit-progress-value
+.about li
 {
-    background-color: var(--accent-color);
-    border-radius: 6px;
-    transition: width 1s ease-in-out;
-}
-
-.questions-left
-{
-    margin-top: 30px;
-    padding: 0;
-    text-align: center;
-    
-}
-
-.questions-left p
-{
-    text-transform: uppercase;
-    font-size: 15px;
-    font-family: var(--main-font);
-    padding: 5px;
     margin: 0;
-    color: var(--white-color);
-    border-radius: 6px;
+    padding: 0;
+    color: var(--dark-text-color);
 }
 
 @media screen and (max-width: 1000px)
 {
+    header li:nth-of-type(2)
+    {
+        display: none;
+    }
+
     .quiz-list
     {
         flex-direction: column;
         margin: 0;
     }
 
-    .quiz-list .add-icon
+    footer
     {
-        font-size: 50px;
-        margin: 25px;
+        height: 150px;
     }
 
-    .create-quiz
-    {
-        width: 80%;
-    }
-
-    .create-quiz .row
+    footer ul
     {
         flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .alternatives
+    {
+        width: 80%;
     }
 }

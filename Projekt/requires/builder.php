@@ -44,48 +44,51 @@
             echo '</ul></header>';
         }
 
-        function placePageStart()
+        public function placePageStart()
         {
+            echo '<div class="content">';
+
             switch($this->location)
             {
-                case "index":   echo '<div id="content" class="content">';
-                                echo '<h1> Välj ett quiz att spela: </h1>';
+                case "index":   echo '<h1> Välj ett quiz att spela: </h1>';
                                 echo '<ul class="quiz-list">'; 
                                 break;
-                case "result":  echo '<div id="content" class="content result">';
+                case "result":  echo '<div class="result">';
                                 echo '<h1> Resultat </h1>';
                                 echo '<div class="questions">';
                                 break;
-                case "about":   
+                case "about":   break;
             }
         }
 
-        function placePageEnd()
+        public function placePageEnd()
         {
             switch($this->location)
             {
-                case "index":   echo '</ul> </div>';
+                case "index":   echo '</ul>';
                                 break;
                 case "result":  echo '</div>';
                                 echo '<a href="index" class="button">Avsluta</a>';
                                 echo '</div>';
                                 break;
+                case "about":   break;
             }
 
+            echo '</div>';
         }
 
         function placeFooter()
         {
-            echo "<footer> <ul> 
+            echo '<footer> <ul> 
                     <li>Oscar Fredriksson</li>
-                    <li>osfr1701@student.miun.se</li>
-                    <li id='lastModified'>Senast ändrad: ";
+                    <li><a href="mailto:osfr1701@student.miun.se">osfr1701@student.miun.se</a></li>
+                    <li id="lastModified">Senast ändrad: ';
                              
                     setlocale(LC_ALL, "sv_SE");
 
                     echo strftime("%e %B %Y %H:%M:%S", $this->get_last_modified()); 
                              
-            echo "</li> </ul> </footer> </div>";
+            echo "</li> </ul> </footer></div>";
             
             $this->importScript(); 
             
@@ -94,7 +97,11 @@
 
         function importScript()
         {
-            echo'<script src="js/' . $this->location . '.js"></script>';
+            $script = 'js/' . $this->location . '.js';
+
+            if(!file_exists($script)) return;
+
+            echo'<script src="' . $script . '"></script>';
 
         }
 

@@ -23,7 +23,11 @@
 
     $builder->placeHeader();
 
+    $builder->placePageStart();
+
     $builder->create_play_page();
+
+    $builder->placePageEnd();
 
     $builder->placeFooter(); 
 ?>    
