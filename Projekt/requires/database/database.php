@@ -7,7 +7,7 @@
 
         public function __construct()
         {
-            $this->connect();
+            //$this->connect();
         }
 
         public function connect()
@@ -28,8 +28,19 @@
         }
 
         private function sendQuery($query)
-        {                
-            if(!$result = $this->conn->query($query))
+        {        
+            $this->connect();
+
+            if(!$stmt = $this->conn->prepare($query))
+            {
+                die("Error: " . $this->conn->error);
+            }
+            
+
+            $stmt->execute();
+
+            
+            if(!$result = $stmt->get_result())
             {
                 die("Error:" . $this->conn->error);
             }
@@ -37,6 +48,8 @@
             {
                 return $result;
             }
+
+            $this->conn->close();
         }
 
         public function quiz_exists($quiz_ID)
@@ -53,7 +66,7 @@
         {
             $query = "SELECT QUIZ_ID FROM QUIZZES";
                 
-            !$result = $this->sendQuery($query);
+            $result = $this->sendQuery($query);
 
             $quizzes = Array();
 

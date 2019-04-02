@@ -31,6 +31,11 @@ html, body
     height: 100%;
 }
 
+header, section, footer, aside, nav, main, article, figure 
+{
+  display: block; 
+}
+
 h1 
 {
     margin: 0;
