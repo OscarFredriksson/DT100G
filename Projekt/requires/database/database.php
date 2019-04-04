@@ -22,11 +22,6 @@
             }     
         }
 
-        public function __destruct()
-        {
-            /*if($this->conn)  $this->conn->close();*/
-        }
-
         private function sendQuery($query)
         {        
             $this->connect();
@@ -36,9 +31,7 @@
                 die("Error: " . $this->conn->error);
             }
             
-
             $stmt->execute();
-
             
             if(!$result = $stmt->get_result())
             {
@@ -119,14 +112,14 @@
             return $questions;
         }
 
-        public function get_question($question_ID)
+        /*public function get_question($question_ID)
         {
             $query = "SELECT * FROM QUESTIONS WHERE QUESTION_ID=" . $question_ID;
 
             $result = $this->sendQuery($query);
 
             return $result->fetch_assoc()["TEXT"];
-        }
+        }*/
 
         public function get_all_alternatives($question_ID)
         {
@@ -143,7 +136,7 @@
             return $alternatives;
         }
 
-        public function get_alternative_text($alternative_ID)
+        /*public function get_alternative_text($alternative_ID)
         {
             $query = "SELECT TEXT FROM ALTERNATIVES WHERE ALTERNATIVE_ID=" . $alternative_ID . " LIMIT 1";
 
@@ -163,13 +156,6 @@
             return $result->fetch_assoc()["IS_CORRECT"];
         }
 
-        public function add_answer($alternative_ID)
-        {
-            $query = "INSERT INTO ANSWERS (ALTERNATIVE_ID) VALUES (" . $alternative_ID . ")";
-            
-            $this->sendQuery($query);
-        }
-
         public function get_correct_answer($question_ID)
         {
             $query = "SELECT QUESTION_ID FROM QUESTIONS WHERE QUESTION_ID=" . $question_ID . "AND IS_CORRECT=1 LIMIT 1";
@@ -177,7 +163,7 @@
             $result = $this->sendQuery($query);
 
             return $result->fetch_assoc()["QUESTION_ID"];
-        }
+        }*/
     }
 
 ?>

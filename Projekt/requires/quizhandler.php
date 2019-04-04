@@ -10,18 +10,16 @@
     else
     {
         $quiz = $_SESSION['quiz'];
-        $quiz->reconnect_to_DB();
-    
-        /*if($quiz->isFinished()) Header("Location: result");*/
+        $quiz->reconnect_to_DB();    
     }
 
     if(!empty($_REQUEST["request"]))
     {
         switch($_REQUEST["request"])
         {
-            case "load question":       $quiz->placeQuestion();
+            case "get question":        $quiz->placeQuestion();
                                         break;
-            case "load answers":        $quiz->placeAlternatives();
+            case "get alternatives":    $quiz->placeAlternatives();
                                         break;
             case "get nr of questions": echo $quiz->getNumberOfQuestions();
                                         break;

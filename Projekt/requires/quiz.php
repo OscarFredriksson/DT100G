@@ -3,7 +3,7 @@
 
     class Quiz
     {
-        public $id;
+        private $id;
         private $questions = Array();
         private $activeQuestion;
 
@@ -47,7 +47,7 @@
 
             foreach($alternatives as $alternative)
             {
-                echo '<input type="button" class="button alternative hover-highlight no-select-mark" onClick="checkAnswer(' . "'" . $alternative->text . "'," . $alternative->is_correct . ',this)"';
+                echo '<input type="button" class="button alternative hover-highlight no-select-mark" onClick="checkAnswer(' . $alternative->is_correct . ',this)"';
 
                 echo "id='" . $alternative->is_correct . "'";
 

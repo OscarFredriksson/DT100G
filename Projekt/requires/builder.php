@@ -34,7 +34,7 @@
             echo '><a href="index"> Quizspel </a></li>';
             
             echo '<li ';
-            if($this->location == "quiz") echo 'class="active"';
+            if($this->location == "play") echo 'class="active"';
             echo '><p>' . $this->title . '</p></li>';
             
             echo '<li ';
@@ -57,7 +57,6 @@
                                 echo '<h1> Resultat </h1>';
                                 echo '<div class="questions">';
                                 break;
-                case "about":   break;
             }
         }
 
@@ -71,7 +70,6 @@
                                 echo '<a href="index" class="button">Avsluta</a>';
                                 echo '</div>';
                                 break;
-                case "about":   break;
             }
 
             echo '</div>';
@@ -95,6 +93,16 @@
             echo "</body></html>";
         }
 
+        function get_last_modified() 
+        { 
+            $incls = get_included_files(); 
+            $incls = array_filter($incls, "is_file"); 
+            $mod_times = array_map('filemtime', $incls); 
+            $mod_time = max($mod_times); 
+
+            return $mod_time; 
+        }       
+
         function importScript()
         {
             $script = 'js/' . $this->location . '.js';
@@ -103,16 +111,6 @@
 
             echo'<script src="' . $script . '"></script>';
 
-        }
-
-        private function get_last_modified() 
-        { 
-            $incls = get_included_files(); 
-            $incls = array_filter($incls, "is_file"); 
-            $mod_times = array_map('filemtime', $incls); 
-            $mod_time = max($mod_times); 
-
-            return $mod_time; 
         }
 
         function create_quiz_box($id, $title, $descr)

@@ -334,6 +334,7 @@ footer li
 
 .alternative
 {
+    flex-grow: 1;
     background: linear-gradient(to right, var(--clicked-answer-color) 50%, var(--light-section-color) 50%);
     background-size: 200% 100%;
     background-position: right bottom;
@@ -407,6 +408,7 @@ footer li
     margin: auto;
     background-color: var(--accent-color);
     color: var(--light-text-color);
+    width: 200px;
 }
 
 .result .icon
