@@ -15,19 +15,19 @@
 
     interface QuestionInterface
     {
-        function __construct($text);                        //Konstruera en fråga med given text 
-        function addAlternative(Alternative $alternative);  //Lägg till ett alternativ till frågan
-        function getQuestion();                             //Hämta frågans text
-        function getAlternatives();                         //Hämta alla alternativ 
-        function addAnswer(Alternative $answer);            //Lägg till användarens svar på frågan
-        function getAnswer();                               //Hämta användarens svar på frågan
-        function getCorrectAlternative();                   //Hämta det korrekta alternativet
+        function __construct($text);            //Konstruera en fråga med given text 
+        function addAlternative($alternative);  //Lägg till ett alternativ till frågan
+        function getText();                     //Hämta frågans text
+        function getAlternatives();             //Hämta alla alternativ 
+        function addAnswer($answer);            //Lägg till användarens svar på frågan
+        function getAnswer();                   //Hämta användarens svar på frågan
+        function getCorrectAlternative();       //Hämta det korrekta alternativet
     }
 
 
     class Question implements QuestionInterface
     {
-        public $text;   //Frågans text (alltså själva frågan)
+        private $text;   //Frågans text (alltså själva frågan)
         
         private $alternatives = Array();    //En lista med alla alternativ till frågan, använder alternativ-klassen endan
         
@@ -38,12 +38,12 @@
             $this->text = $text;    
         }
 
-        function addAlternative(Alternative $alternative)   //Lägg till ett alternativ till frågan, inargumentet är ett Alternative-objekt av klassen nedan
+        function addAlternative($alternative)   //Lägg till ett alternativ till frågan, inargumentet är ett Alternative-objekt av klassen nedan
         {
             $this->alternatives[] = $alternative;   //Lägg till alternativet i listan
         }
 
-        function getQuestion()  //Hämta frågans text
+        function getText()  //Hämta frågans text
         {
             return $this->text;
         }
@@ -55,7 +55,7 @@
             return $this->alternatives;
         }
 
-        function addAnswer(Alternative $answer) //Lägg till användarens svar på frågan
+        function addAnswer($answer) //Lägg till användarens svar på frågan
         {
             $this->answer = $answer;
         }

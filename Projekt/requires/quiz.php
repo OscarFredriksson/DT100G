@@ -3,139 +3,186 @@
     *   Denna fil innehåller klassen för ett Quiz
     *
     *   Klassens syfte är att hålla all data för ett quiz, detta innebär alla dess
-    *   frågor + alternativ, mm, samt att ha funktioner som behövs
+    *   frågor + alternativ, title, beskrivningstext, mm, samt att ha de funktioner 
+    *   som behövs för att utföra nödvändiga operationer på denna data, t.ex gå till 
+    *   nästa fråga, placera ut frågan + alternativ, mm.    
     *
     *   All kod är skriven av Oscar Fredriksson   
     */
 
-
     //Inkludera databas-klassen för att kunna använda denna för att hämta data
     require_once "database/database.php";
 
-    class Quiz
+    interface QuizInterface
     {
-        private $id;
-        private $questions = Array();
-        private $activeQuestion;
+        function __construct($id);   //Konstruera quiz med givet ID
+   
+        /*
+        *   När en instans av klassen skickas mellan filer med hjälp av sessioner
+        *   tappas uppkopplingen till databasen, denna funktion återställer den
+        */
+        function reconnect_to_DB();
 
-        private $database;
+        function getTitle();    //Hämta quizzets titel
+        function getDescr();    //Hämta quizzets beskrivningstext
 
-        private $finished = false;
+        function placeQuestion();       //Placera ut frågetexten
+        function placeAlternatives();   //Placera ut alternativ-knapparna
 
-        function __construct($id)
+        function isFinished();      //Kolla om quizzet är färdigspelat
+        function nextQuestion();    //Gå till nästa fråga
+
+        function getNumberOfQuestions();    //Hämta hur många frågor quizzet har
+        
+        function addAnswer($text, $is_correct); //Lägg till användarens svar för nuvarande fråga
+        
+        function getQuestionsLeft();    //Hämta hur många frågor det är kvar
+        
+        function placeResultButtons();  //Placera ut knapparna för resultatet på varje fråga
+    }
+
+    class Quiz implements QuizInterface
+    {
+        private $id;    //Quizzets ID
+        private $title; //Quizzets titel
+        private $descr; //Quizzets beskrivningstext
+
+        private $finished = false;  //Om quizzet är färdigspelat eller ej
+        
+        private $questions = Array();   //En lista med alla quizzets frågor
+        
+        /*
+        *   Den nuvarande frågan, alltså den fråga som visas som 
+        *   på skärmen för användaren. Variabeln håller indexet till
+        *   frågan i listan med frågor, börja på indexet för första frågan
+        */
+        private $currentQuestion = 0;
+
+        private $database;  //Objekt för quizzets databas
+
+
+        function __construct($id)   //Konstruera quiz med givet ID
         {
-            $this->id = $id;
-            
-            $this->database = new Database();
+            $this->id = $id;    //Spara ID't    
 
-            $result = $this->database->get_all_questions($this->id);
-            
-            foreach($result as $question)
-            {                
-                $this->questions[] = $question;
-            }
-            $this->activeQuestion = 0;
+            $this->database = new Database();   //skapa en ny databas för quizzet
+
+            $this->title = $this->database->get_quiz_title($this->id);  //Hämta och spara titeln från databasen
+            $this->descr = $this->database->get_quiz_descr($this->id);  //Hämta och spara beskrivningstexten från databasen
+
+            $this->questions = $this->database->get_all_questions($this->id); //Hämta alla frågor från databasen
         }
 
+        /*
+        *   När en instans av klassen skickas mellan filer med hjälp av sessioner
+        *   tappas uppkopplingen till databasen, denna funktion återställer den
+        */
         function reconnect_to_DB()
         {
-            $this->database->connect();
+            $this->database->connect(); //använd databasklassens funktion för att ansluta
         }
 
-        function getTitle()
+        function getTitle() //Hämta quizzets titel
         {
-            return $this->database->get_quiz_title($this->id);
+            return $this->title;
         }
 
-        function placeQuestion()
+        function getDescr() //Hämta quizzets beskrivningstext
         {
-            echo $this->questions[$this->activeQuestion]->getQuestion();
+            return $this->descr;
         }
 
-        function placeAlternatives()
+        function placeQuestion()    //Placera ut frågetexten
         {
-            $alternatives = $this->questions[$this->activeQuestion]->getAlternatives();
+            //Hämta nuvarande fråga från listan och placera ut dess text
+            echo $this->questions[$this->currentQuestion]->getText();
+        }
 
+        function placeAlternatives()    //Placera ut alternativ-knapparna
+        {
+            //Hämta alla alternativ för nuvarande fråga
+            $alternatives = $this->questions[$this->currentQuestion]->getAlternatives();
+
+            //Loopa igenom dessa
             foreach($alternatives as $alternative)
             {
-                echo '<input type="button" class="button alternative hover-highlight no-select-mark"';
+                /*
+                *   Bygg ihop HTML-elementet för alternativknappen.
+                *   Sätt dess onCLick funktion till checkAnswer funktionen och 
+                *   skicka in om svaret är korrekt eller ej, samt själva HTML-elementet
+                */
+                echo '<input type="button" class="button alternative"';
                 echo 'onClick="checkAnswer(' . $alternative->is_correct . ',this)"';
-                echo "id='" . $alternative->is_correct . "'";
                 echo 'value="' . $alternative->text . '">';
             }
         }
 
-        function placeResultBoxes()
-        {
-            $i = 1;
-
-            foreach($this->questions as $question)
-            {
-                echo '<button class="button hover-highlight no-select-mark" 
-                        onClick="showAnswer(' . "'" . $question->text . "','" . $question->getAnswer()->text . "'";
-                        
-                if(!$question->getAnswer()->is_correct) echo ",'" . $question->getCorrectAnswer()->text . "'";
-                
-                echo ')">';
-                                
-                echo '<i class="material-icons icon';
-                
-                if($question->getAnswer()->is_correct)  echo ' correct"> check_circle';
-                else                                    echo ' wrong"> error';
-                
-                echo '</i>' . "Fråga " . $i . '</button>';
-
-                $i++;
-            }
-        }
-
-        function nextQuestion()
-        {
-            $this->activeQuestion++;
-            
-            if($this->activeQuestion > (sizeof($this->questions) - 1))
-                $this->finished = true;
-        }
-
-        function isFinished()
+        function isFinished()   //Kolla om quizzet är färdigspelat
         {
             return $this->finished;
         }
 
-        function isLastQuestion()
+        function nextQuestion() //Gå till nästa fråga
         {
-            if($this->activeQuestion >= (sizeof($this->questions) - 1)) return true;
-            else                                                        return false;
+            $this->currentQuestion++;   //Öka på räknaren för vilken fråga vi är på
+
+            //Om räknaren har gått längre än sista frågan i listan är quizzet färdigspelat
+            if($this->currentQuestion > (sizeof($this->questions) - 1))
+            {
+                $this->finished = true;
+            }
         }
 
-        function getNumberOfQuestions()
+        function getNumberOfQuestions() //Hämta hur många frågor quizzet har
         {
             return sizeof($this->questions);
         }
 
-        function setQuestion($nr)
+        function addAnswer($text, $is_correct)  //Lägg till användarens svar för nuvarande fråga
         {
-            $this->activeQuestion = $nr;
+            //Lägg till användarens svar till nuvarande fråga, använd alternativklassen för detta
+            $this->questions[$this->currentQuestion]->addAnswer(new Alternative($text, $is_correct));
         }
 
-        function getCurrent()
+        function getQuestionsLeft() //Hämta hur många frågor det är kvar
         {
-            return $this->activeQuestion;
+            return sizeof($this->questions) - $this->currentQuestion;
         }
 
-        function getQuestions()
+        function placeResultButtons()   //Placera ut knapparna för resultatet på varje fråga
         {
-            return $this->questions;
-        }
+            $i = 1; //Räknare för frågorna
 
-        function addAnswer($text, $is_correct)
-        {
-            $this->questions[$this->activeQuestion]->addAnswer(new Alternative($text, $is_correct));
-        }
+            foreach($this->questions as $question)  //Gå igenom alla frågor
+            {
+                /*
+                *   Bygg ihop HTML-elementet för en knapp för frågans resultat.
+                *   Sätt dess onClick funktion till att köra showAnswer funktionen i javascript-filen.
+                *   I denna skickas frågans text, det valda alternativets text samt möjligtvis det korrekta
+                *   alternativets text in. 
+                *
+                *   Som knappens innehåll placeras en ikon för om svaret var rätt eller ej, samt frågans nummer,
+                *   t.ex "Fråga 2". 
+                */
+                echo '<button class="button"';
+                echo 'onClick="showAnswer(' . "'" . $question->getText() . "','" . $question->getAnswer()->text . "'";
+                        
+                //Om svaret inte är korrekt, skicka även med rätt svar in i funktionen
+                if(!$question->getAnswer()->is_correct) echo ",'" . $question->getCorrectAlternative()->text . "'";
+                
+                echo ')">';
+                                
+                //Skapa en ikon som placeras i knappen
+                echo '<i class="material-icons icon';
+                
+                //Placera relevant ikon beroende på om svaret är rätt eller ej
+                if($question->getAnswer()->is_correct)  echo ' correct"> check_circle';
+                else                                    echo ' wrong"> error';
+                
+                echo '</i>' . "Fråga " . $i . '</button>';  //Skriv ut frågans nummer (t.ex "Fråga 2")
 
-        function getQuestionsLeft()
-        {
-            return sizeof($this->questions) - $this->activeQuestion;
+                $i++;
+            }
         }
     }
 

@@ -21,7 +21,6 @@
     */
     session_start();
 
-
     /*
     *   Om quiz-objektet inte finns, eller om quizzet inte är färdigspelat har nått gått fel, 
     *   gå till index-sidan
@@ -47,7 +46,7 @@
         $builder->placeHeader();        //Be byggaren placera ut hemsidans header med navigeringslänkar
         $builder->placePageStart();     //Be byggaren placera ut starten på hemsidan så denna sedan kan fyllas med quiz-boxarna 
  
-        $quiz->placeResultBoxes();  //Be quiz-objektet om quizzets resultat
+        $quiz->placeResultButtons();  //Be quiz-objektet om quizzets resultat
 
         $builder->placePageEnd();   //Placera ut slutet på innehållet
 
@@ -56,7 +55,7 @@
         * med hjälp av javascript när en av frågeknapparna trycks på
         */
         $builder->create_result_popup_box();   
-
+                
         $builder->placeFooter();    //Placera ut sidans footer
     }
 
