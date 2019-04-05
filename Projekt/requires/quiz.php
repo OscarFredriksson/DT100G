@@ -1,4 +1,15 @@
 <?php
+    /*
+    *   Denna fil innehåller klassen för ett Quiz
+    *
+    *   Klassens syfte är att hålla all data för ett quiz, detta innebär alla dess
+    *   frågor + alternativ, mm, samt att ha funktioner som behövs
+    *
+    *   All kod är skriven av Oscar Fredriksson   
+    */
+
+
+    //Inkludera databas-klassen för att kunna använda denna för att hämta data
     require_once "database/database.php";
 
     class Quiz
@@ -47,10 +58,9 @@
 
             foreach($alternatives as $alternative)
             {
-                echo '<input type="button" class="button alternative hover-highlight no-select-mark" onClick="checkAnswer(' . $alternative->is_correct . ',this)"';
-
+                echo '<input type="button" class="button alternative hover-highlight no-select-mark"';
+                echo 'onClick="checkAnswer(' . $alternative->is_correct . ',this)"';
                 echo "id='" . $alternative->is_correct . "'";
-
                 echo 'value="' . $alternative->text . '">';
             }
         }

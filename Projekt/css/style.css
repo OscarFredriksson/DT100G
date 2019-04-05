@@ -1,12 +1,12 @@
 :root
 {
-    --light-blue-color: #2E9CCA; /*#30c9e8*/;
+    --light-blue-color: #2E9CCA;
     --dark-blue-color: #3A4A4D;
     --light-section-color: #FFFFFF;
 
     --light-text-color: #FEFFFF;
     --dark-text-color: #15252A;
-    --white-color: #FEFFFF; /*#F9FBFB;*/
+    --white-color: #FEFFFF;
     --accent-color: orange;
     
     --icon-gray-color: #777777;
@@ -382,9 +382,9 @@ footer li
     border-radius: 6px;
 }
 
-/* ------------------ 
+/* -------------------- 
         Resultat-sidan
-    ------------------ */
+    ------------------- */
 
 .result .questions
 {
