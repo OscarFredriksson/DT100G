@@ -26,7 +26,7 @@
         <p> Tanken med sidan var att skapa en platform där olika quiz kan läggas ut som sedan kan spelas av sidans besökare. </P> 
     </li>
     <li> 
-        <p> All kod är skriven av Oscar Fredriksson (osfr1701@student.miun.se) '
+        <p> All kod är skriven av Oscar Fredriksson (osfr1701@student.miun.se) </p>
     </li>
 </ul>
 

@@ -11,7 +11,8 @@
     */
 
     //Inkludera databas-klassen för att kunna använda denna för att hämta data
-    require_once "database/database.php";
+    
+    require_once "requires/database/database.php";
 
     interface QuizInterface
     {

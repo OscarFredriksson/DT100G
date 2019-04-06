@@ -23,7 +23,7 @@
 
     if(empty($_GET["id"]))  //Om quiz-IDt är tomt är nått fel, gå till index sidan
     {
-        header("Location: index");
+        header("Location: index.php");
     }
     else    //Annars finns det ett ID att hämta
     {        
@@ -32,7 +32,7 @@
         $database = new Database(); //Skapa ett nytt databas-objekt
 
         //Kolla om det finns ett quiz med det givna IDt, om inte, gå till index-sidan
-        if(!$database->quiz_exists($_SESSION["QUIZ_ID"]))   header("Location: index");  
+        if(!$database->quiz_exists($_SESSION["QUIZ_ID"]))   header("Location: index.php");  
     }
 
     //Skapa en ny hemsidebyggare för quiz-sidan, skicka in quizzets titel för att kunna placera denna i headern

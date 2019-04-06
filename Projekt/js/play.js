@@ -58,7 +58,7 @@ function sendAjax(url, callback)
 function initializeProgressBar()    //Sätt startvärde för progress-baren
 {
     //Skicka en ajax förfrågan till servern för att be om antalet frågor för quizzet
-    sendAjax("requires/quizhandler.php?request=get+nr+of+questions", function(response) //funktionen körs när förfrågan får svar från servern
+    sendAjax("quizhandler.php?request=get+nr+of+questions", function(response) //funktionen körs när förfrågan får svar från servern
     {
         progressBar.max = response; //sätt maxvärdet för progress-baren till antalet frågor
     });
@@ -67,7 +67,7 @@ function initializeProgressBar()    //Sätt startvärde för progress-baren
 function setQuestionsLeft() //Sätt ut texten för hur många frågor det är kvar
 {   
     //Skicka en ajax förfrågan till servern för hur många frågor det är kvar
-    sendAjax("requires/quizhandler.php?request=get+questions+left", function(response) //funktionen körs när förfrågan får svar från servern
+    sendAjax("quizhandler.php?request=get+questions+left", function(response) //funktionen körs när förfrågan får svar från servern
     {
         var questionsLeft = document.getElementById("questions-left");  //Spara objektet  
 
@@ -80,7 +80,7 @@ function setQuestionsLeft() //Sätt ut texten för hur många frågor det är kv
 function placeQuestion()    //Placera ut texten för frågan
 {
     //Skicka en ajax förfrågan till servern för att få frågetexten
-    sendAjax("requires/quizhandler.php?request=get+question", function(response)    //Funktionen körs när förfrågan får svar från servern
+    sendAjax("quizhandler.php?request=get+question", function(response)    //Funktionen körs när förfrågan får svar från servern
     {
         document.getElementById("question-text").innerHTML = response;  //Sätt HTML-elementets värde till svaret
     });
@@ -89,7 +89,7 @@ function placeQuestion()    //Placera ut texten för frågan
 function placeAlternatives()    //Placera ut knapparna för alternativen
 {
     //Skicka en ajax förfrågan till servern för att få HTML-koden för alla alternativ
-    sendAjax("requires/quizhandler.php?request=get+alternatives", function(response)
+    sendAjax("quizhandler.php?request=get+alternatives", function(response)
     {
         //Fyll alternativ-sektionen med svaret
         document.getElementById("alternatives").innerHTML = response;   
@@ -104,7 +104,7 @@ function placeAlternatives()    //Placera ut knapparna för alternativen
 function requestNextQuestion(callback) 
 {
     //Skicka en ajax förfrågan till servern att gå till nästa fråga
-    sendAjax("requires/quizhandler.php?request=next+question", function()   //Funktionen körs när servern är klar med förfrågan
+    sendAjax("quizhandler.php?request=next+question", function()   //Funktionen körs när servern är klar med förfrågan
     {
         if(callback)    callback(); //När förfrågan är färdig, kör callback funktionen
     });
@@ -123,14 +123,14 @@ function gotoNextQuestion() //Gå till nästa fråga
         setQuestionsLeft(); //Sätt texten för hur många frågor det är kvar
 
         //Skicka en förfrågan för att se om quizzet är färdigspelat (alltså att föregående fråga var den sista)
-        sendAjax("requires/quizhandler.php?request=is+finished", function(response)
+        sendAjax("quizhandler.php?request=is+finished", function(response)
         {
             if(response)    //Om förfrågan får "1" som svar är quizzet färdigspelat 
             {
                 setTimeout(function()   //Vänta 1 sekund för att progress-baren ska få animera färdigt
                 {
                     window.onbeforeunload = null;       //Avvaktivera varningsruta för att lämna sidan
-                    window.location.href = "result";    //Gå till resultatsidan
+                    window.location.href = "result.php";    //Gå till resultatsidan
                 }, 1000);
             }
             else    //Annars är quizzet inte färdigspelat
@@ -157,7 +157,7 @@ function disableButtons()   //Avaktivera alla alternativknappar så användaren 
 function addUserAnswer(text, is_correct, callback)  //Plocka in argument för alternativets text samt om det är korrekt eller inte
 {
     //Skicka en ajax förfrågan med värdena så de kan läggas till på servern
-    sendAjax("requires/quizhandler.php?request=add+answer&text=" + text + "&is_correct=" + is_correct, function()
+    sendAjax("quizhandler.php?request=add+answer&text=" + text + "&is_correct=" + is_correct, function()
     {
         if(callback)    callback(); //När förfrågan är färdig, kör callback funktionen
     });

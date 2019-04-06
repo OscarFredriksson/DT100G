@@ -14,6 +14,6 @@ function playButtonClicked(obj) //När "spela"-knappen för ett quiz trycks
     * som sedan hämtas och läggs i URL-en så PHP-kod sedan kan hämta ID-t från URL-en.
     */
 
-    window.location.href = "play?id=" + obj.id; 
+    window.location.href = "play.php?id=" + obj.id; 
 }
 

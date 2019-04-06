@@ -27,7 +27,7 @@
     */
     if(empty($_SESSION['quiz']) or !$_SESSION['quiz']->isFinished())    
     {
-        Header("Location: index");
+        Header("Location: index.php");
     }
     else                          
     {

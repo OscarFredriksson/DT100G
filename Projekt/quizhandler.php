@@ -11,8 +11,8 @@
     *   All kod är skriven av Oscar Fredriksson   
     */
 
-    require_once "quiz.php";
-    
+    require_once "requires/quiz.php";
+
     session_start();
 
     if(empty($_SESSION['quiz']))    //Om sessionen är tom, skapa ett nytt quiz-objekt
@@ -21,9 +21,10 @@
     }
     else    
     {
+
         //Hämta quizzet från sessionen och återanslut till dess databas
         $quiz = $_SESSION['quiz'];
-        //$quiz->reconnect_to_DB();    
+        $quiz->reconnect_to_DB();    
     }
 
     if(!empty($_REQUEST["request"]))    //Om det finns en request

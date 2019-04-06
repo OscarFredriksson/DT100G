@@ -14,7 +14,8 @@
     *   Inkludera fråge- och alternativklassen för att kunna bygga objekt av dessa 
     *   som sedan skickas som returvärde mm. 
     */
-    require_once $_SERVER["DOCUMENT_ROOT"] . "/Projekt/requires/question.php";  
+    require_once "requires/question.php";
+    require_once "requires/database/password.php";
 
     class Database
     {
@@ -22,8 +23,10 @@
 
         public function connect()   //Anslut till databasen
         {
+            global $password;   //Hämta lösenordet utifrån
+
             //Skapa en ny uppkoppling och tilldela till uppkopplingsvariabeln
-            $this->conn = new mysqli('localhost', 'root', '', 'quiz', 3306);
+            $this->conn = new mysqli('studentmysql.miun.se', 'osfr1701', $password, 'osfr1701');
             
             mysqli_set_charset($this->conn,"utf8"); //Sätt charset till UTF8 för att fixa åäö
             

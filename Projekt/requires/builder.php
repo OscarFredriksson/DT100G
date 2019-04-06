@@ -63,7 +63,7 @@
 
             echo '<li ';
             if($this->location == "index") echo 'class="active"';   //Placera en CSS-klass för den aktiva sidan så en markör kan appliceras för denna
-            echo '><a href="index"> Quizspel </a></li>';
+            echo '><a href="index.php"> Quizspel </a></li>';
             
             echo '<li ';
             if($this->location == "play") echo 'class="active"';
@@ -71,7 +71,7 @@
             
             echo '<li ';
             if($this->location == "about") echo 'class="active"';
-            echo '><a href="about"> om sidan </a></li>';
+            echo '><a href="about.php"> om sidan </a></li>';
 
             echo '</ul></header>';
         }
@@ -102,7 +102,7 @@
                 case "index":   echo '</ul>';
                                 break;
                 case "result":  echo '</div>';
-                                echo '<a href="index" class="button">Avsluta</a>';
+                                echo '<a href="index.php" class="button">Avsluta</a>';
                                 echo '</div>';
                                 break;
             }
