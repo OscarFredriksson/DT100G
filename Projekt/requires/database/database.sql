@@ -1,3 +1,12 @@
+/*
+*   Denna fil innehåller all SQL-kod som behövs för att bygga upp hemsidans databas
+*
+*   All kod är skriven av Oscar Fredriksson   
+*/
+
+
+/*SKAPA TABELLER:   */
+
 CREATE TABLE QUIZZES
 (
     QUIZ_ID INT NOT NULL AUTO_INCREMENT,
@@ -25,6 +34,8 @@ CREATE TABLE ALTERNATIVES
     FOREIGN KEY(QUESTION_ID) REFERENCES QUESTIONS (QUESTION_ID)
 );
 
+
+/*LÄGGA IN ALLA QUIZ:     */
 
 INSERT INTO QUIZZES(TITLE, DESCRIPTION) VALUES ('Exempelquiz', 'Detta är ett exempelquiz för att demonstrera hemsidan. Kan även användas som mall när nya quiz ska läggas in i hemsidans databas.');
 
