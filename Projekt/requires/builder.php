@@ -48,7 +48,7 @@
             echo '<head>';
             echo '<meta charset="utf-8">';
             echo '<link rel="stylesheet" type="text/css" href="css/style.css">';
-            echo '<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Sniglet|Open+Sans">'; //Importera typsnitt från Googles API
+            echo '<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">'; //Importera typsnitt från Googles API
             echo '<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">';  //Importera ikoner från Googles API
             echo '<link rel="icon" href="icons/question_icon.png">';    //Sätt en ikon som visas i tabb-fliken
             echo '<title> Quiz </title>';
@@ -175,13 +175,13 @@
         {
             echo '<div class="question">';  //Wrapper för 
 
-            echo '<h1 id="question-text"></h1>';  //Tagg för frågetexten
+            echo '<h1 id="question-text"> Frågan Här </h1>';  //Tagg för frågetexten
             
             echo '<div class="alternatives" id="alternatives"></div>';
 
             echo '<div class="questions-left"> <p id="questions-left"></p> </div>';
 
-            echo '<progress id="progress-bar" class="bar" max="1" value="0"></div>';
+            echo '<progress id="progress-bar" class="bar" max="1" value="0"> </progress></div>';
         }
 
         function create_result_popup_box()

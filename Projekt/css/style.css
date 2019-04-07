@@ -125,7 +125,7 @@ header
     background-color: var(--light-section-color);
     height: 75px;
     width: 100%;
-    font-family: 'Roboto';
+    font-family: var(--main-font);
 }
 
 header ul
@@ -301,7 +301,7 @@ footer li
 
 .quizbox p
 {
-    font-family: 'Roboto';
+    font-family: var(--main-font);
     color: var(--dark-text-color);
     margin: 15px;
 }
